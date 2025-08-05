@@ -48,7 +48,7 @@ export const ROISimulation: React.FC = () => {
         >
             {/* ✅ SEO Helmet */}
             <Helmet>
-                <title>Talkvera - Key Features for AI Customer Service Automation</title>
+                <title>Talkvera - Revolutionize Your Customer Service</title>
                 <meta
                     name="description"
                     content="Explore Talkvera's key features: AI-powered dashboards, real-time monitoring, prompt customization, knowledge base management, user feedback analytics, and insightful reporting."

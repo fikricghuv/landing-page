@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { 
-  BarChart3, 
-  Activity, 
-  Edit3, 
-  Database, 
-  MessageCircle, 
+import {
+  BarChart3,
+  Activity,
+  Edit3,
+  Database,
+  MessageCircle,
   WrapText
 } from 'lucide-react';
 import { Helmet } from 'react-helmet';
@@ -28,12 +28,12 @@ const features = [
   {
     icon: Database,
     title: "Knowledge Base Management",
-    description: "Upload and tag documents, visualize data connections, and manage AI knowledge sources."
+    description: "Upload and manage AI knowledge sources."
   },
   {
     icon: MessageCircle,
     title: "User Feedback & Analytics",
-    description: "Track unresolved queries, failed intents, and continuously improve AI responses."
+    description: "Track user complaint and take potential action to resolve issues."
   },
   {
     icon: WrapText,
@@ -75,10 +75,10 @@ export const Features: React.FC = () => {
   }, []);
 
   return (
-    <section id="features" className="py-24 bg-gray-50" style={{ backgroundColor: '#e3f2fd'}}>
+    <section id="features" className="py-24 bg-gray-50" style={{ backgroundColor: '#e3f2fd' }}>
       {/* ✅ SEO Helmet */}
       <Helmet>
-        <title>Talkvera - Key Features for AI Customer Service Automation</title>
+        <title>Talkvera - Revolutionize Your Customer Service</title>
         <meta
           name="description"
           content="Explore Talkvera's key features: AI-powered dashboards, real-time monitoring, prompt customization, knowledge base management, user feedback analytics, and insightful reporting."
@@ -109,30 +109,30 @@ export const Features: React.FC = () => {
               ref={(el) => (cardRefs.current[index] = el)}
               data-index={index}
               className={`
-                group bg-white rounded-2xl p-8 shadow-lg transform
+                group bg-white rounded-2xl p-8 shadow-lg
                 ${visibleCards.includes(index)
-                  ? 'opacity-100 translate-y-0 transition-all duration-700'
-                  : 'opacity-0 translate-y-10 transition-all duration-700'
-                }
-                hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300
+                              ? 'opacity-100 translate-y-0 transition-[opacity,transform] duration-700 ease-out'
+                              : 'opacity-0 translate-y-10 transition-[opacity,transform] duration-700 ease-out'
+                            }
+                hover:shadow-2xl hover:-translate-y-2
               `}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ transitionDelay: visibleCards.includes(index) ? `${index * 100}ms` : '0ms' }}
             >
-
-              <div className="w-16 h-16 bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200">
                 <feature.icon className="h-8 w-8 text-white" />
               </div>
-              
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
                 {feature.title}
               </h3>
-              
+
               <p className="text-gray-600 leading-relaxed">
                 {feature.description}
               </p>
 
-              <div className="mt-6 w-0 group-hover:w-full h-1 bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] transition-all duration-500 rounded-full"></div>
+              <div className="mt-6 w-0 group-hover:w-full h-1 bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] transition-all duration-300 rounded-full"></div>
             </div>
+
           ))}
         </div>
       </div>

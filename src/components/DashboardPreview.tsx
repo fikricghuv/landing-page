@@ -65,7 +65,7 @@ export const DashboardPreview: React.FC = () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {[
                 { icon: MessageSquare, value: '2,847', label: 'Total Conversations', color: 'text-blue-500' },
-                { icon: CheckCircle, value: '97.2%', label: 'Resolution Rate', color: 'text-green-500' },
+                { icon: CheckCircle, value: '21', label: 'Total Feedbacks', color: 'text-green-500' },
                 { icon: Clock, value: '0.8s', label: 'Avg Response Time', color: 'text-purple-500' },
                 { icon: Users, value: '1,234', label: 'Active Users', color: 'text-yellow-500' }
               ].map((stat, index) => (

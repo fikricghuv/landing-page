@@ -33,10 +33,17 @@ export const Navigation: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center">
+          <div
+            className="flex items-center space-x-2 cursor-pointer transition-transform duration-300 hover:scale-110"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <img
+              src="/assets/just-logo.png" 
+              alt="Talkvera Logo"
+              className="h-8 w-8"
+            />
             <span
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className={`cursor-pointer text-2xl font-bold transition-transform duration-300 hover:scale-110
+              className={`text-2xl font-bold
                 ${isScrolled ? 'text-gray-900' : 'text-white'}
               `}
             >
