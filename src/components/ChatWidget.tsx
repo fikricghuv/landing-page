@@ -17,7 +17,7 @@ export const ChatWidget: React.FC = () => {
                 style={{
                     width: '400px',
                     height: '70vh',
-                    bottom: '90px',
+                    bottom: '20px',
                     right: '20px',
                     zIndex: 9999,
                     borderRadius: '1rem',

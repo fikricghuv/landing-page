@@ -86,7 +86,7 @@ export const HowItWorks: React.FC = () => {
 
         <div className="relative">
           {/* Connection Lines */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-purple-300 to-green-200 transform -translate-y-1/2 "></div>
+          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] transform -translate-y-1/2 "></div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative">
             {steps.map((step, index) => (
@@ -94,16 +94,16 @@ export const HowItWorks: React.FC = () => {
                 key={step.title}
                 ref={(el) => (stepRefs.current[index] = el)}
                 data-index={index}
-                className={`relative group transition-all duration-700 transform 
+                className={`relative group transition-all duration-700 transform
                   ${visibleSteps.includes(index)
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-10'
                   }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:border-blue-200 border border-transparent border-gray-200">
+                <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-gray-200 hover:border-blue-200 border border-gray-200">
                   {/* Step Number */}
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full text-xl font-bold mb-6 shadow-lg">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] text-white rounded-full text-xl font-bold mb-6 shadow-lg">
                     {index + 1}
                   </div>
                   
@@ -112,7 +112,7 @@ export const HowItWorks: React.FC = () => {
                     <step.icon className="h-10 w-10 text-blue-600 transition-transform duration-300 group-hover:scale-110" />
                   </div>
 
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
                     {step.title}
                   </h3>
                   
@@ -134,7 +134,7 @@ export const HowItWorks: React.FC = () => {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-xl text-lg font-semibold hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <button className="bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] text-white px-10 py-4 rounded-xl text-lg font-semibold hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
             Start Your Free Trial
           </button>
         </div>

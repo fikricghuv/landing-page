@@ -108,15 +108,18 @@ export const Features: React.FC = () => {
               key={feature.title}
               ref={(el) => (cardRefs.current[index] = el)}
               data-index={index}
-              className={`group bg-white rounded-2xl p-8 shadow-lg transition-all duration-700 transform 
-                ${visibleCards.includes(index) 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-10'
-                } 
-                hover:shadow-2xl hover:-translate-y-2`}
+              className={`
+                group bg-white rounded-2xl p-8 shadow-lg transform
+                ${visibleCards.includes(index)
+                  ? 'opacity-100 translate-y-0 transition-all duration-700'
+                  : 'opacity-0 translate-y-10 transition-all duration-700'
+                }
+                hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300
+              `}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+
+              <div className="w-16 h-16 bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <feature.icon className="h-8 w-8 text-white" />
               </div>
               
@@ -128,7 +131,7 @@ export const Features: React.FC = () => {
                 {feature.description}
               </p>
 
-              <div className="mt-6 w-0 group-hover:w-full h-1 bg-gradient-to-r from-blue-600 to-green-500 transition-all duration-500 rounded-full"></div>
+              <div className="mt-6 w-0 group-hover:w-full h-1 bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] transition-all duration-500 rounded-full"></div>
             </div>
           ))}
         </div>

@@ -101,9 +101,9 @@ export const Testimonials: React.FC = () => {
             className={`bg-white rounded-3xl shadow-2xl p-8 lg:p-12 relative overflow-hidden border border-gray-200 transition-all duration-500 transform
               ${
                 isTransitioning
-                  ? direction === 'right'
-                    ? 'opacity-0 -translate-x-8'
-                    : 'opacity-0 translate-x-8'
+                  ? direction === 'left'
+                    ? 'opacity-0 translate-x-8'
+                    : 'opacity-0 -translate-x-8'
                   : 'opacity-100 translate-x-0'
               }
             `}
@@ -126,7 +126,7 @@ export const Testimonials: React.FC = () => {
               </blockquote>
 
               <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-4 space-y-2 sm:space-y-0 text-center sm:text-left">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
                   {testimonials[currentIndex].company.charAt(0)}
                 </div>
                 <div className="sm:text-left text-center">

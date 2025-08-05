@@ -66,7 +66,7 @@ export const Hero: React.FC = () => {
   return (
     <section
       ref={heroRef}
-      className={`relative min-h-screen bg-[#0d47a1] overflow-hidden transform transition-all duration-700 ease-out
+      className={`relative min-h-screen bg-gradient-to-br from-[#0d47a1] via-[#2196f3] to-[#1976d2] overflow-hidden transform transition-all duration-700 ease-out
         ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95'}
       `}
     >
@@ -129,7 +129,7 @@ export const Hero: React.FC = () => {
           <div className="mt-16 lg:mt-0 lg:col-span-6 relative">
             <div className="relative bg-white rounded-lg shadow-2xl overflow-visible max-w-sm mx-auto">
               {/* Header */}
-              <div className="p-4 flex items-center bg-blue-600 rounded-t-lg">
+              <div className="p-4 flex items-center bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] rounded-t-lg">
                 <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-3">
                   <Bot className="w-6 h-6 text-white" />
                 </div>
@@ -193,10 +193,10 @@ export const Hero: React.FC = () => {
               </div>
             </div>
 
-            <div className="absolute -top-4 -right-4 bg-white rounded-lg shadow-lg p-3 animate-bounce">
+            <div className="absolute -top-4 -right-4 bg-[#e3f2fd] rounded-lg shadow-lg p-3 animate-bounce">
               <div className="text-sm font-semibold text-green-600">94% Resolution Rate</div>
             </div>
-            <div className="absolute -bottom-10 -left-4 bg-white rounded-lg shadow-lg p-3 animate-bounce">
+            <div className="absolute -bottom-10 -left-4 bg-[#e3f2fd] rounded-lg shadow-lg p-3 animate-bounce">
               <div className="text-sm font-semibold text-blue-600">1.2s Response Time</div>
             </div>
           </div>

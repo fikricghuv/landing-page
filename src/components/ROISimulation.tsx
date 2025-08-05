@@ -94,11 +94,12 @@ export const ROISimulation: React.FC = () => {
                                     </label>
                                     <input
                                         type="number"
-                                        className="input-field w-full border rounded-lg p-3 focus:ring focus:ring-primary/30"
+                                        className="input-field w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary/30"
                                         placeholder="e.g., 5000"
                                         value={ticketVolume}
                                         onChange={(e) => setTicketVolume(Number(e.target.value))}
                                     />
+
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -106,7 +107,7 @@ export const ROISimulation: React.FC = () => {
                                     </label>
                                     <input
                                         type="number"
-                                        className="input-field w-full border rounded-lg p-3 focus:ring focus:ring-primary/30"
+                                        className="input-field w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary/30"
                                         placeholder="e.g., 8"
                                         value={teamSize}
                                         onChange={(e) => setTeamSize(Number(e.target.value))}
@@ -118,7 +119,7 @@ export const ROISimulation: React.FC = () => {
                                     </label>
                                     <input
                                         type="number"
-                                        className="input-field w-full border rounded-lg p-3 focus:ring focus:ring-primary/30"
+                                        className="input-field w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary/30"
                                         placeholder="e.g., 15"
                                         value={resolutionTime}
                                         onChange={(e) => setResolutionTime(Number(e.target.value))}
@@ -130,7 +131,7 @@ export const ROISimulation: React.FC = () => {
                                     </label>
                                     <input
                                         type="number"
-                                        className="input-field w-full border rounded-lg p-3 focus:ring focus:ring-primary/30"
+                                        className="input-field w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary/30"
                                         placeholder="e.g., 45000"
                                         value={salary}
                                         onChange={(e) => setSalary(Number(e.target.value))}
