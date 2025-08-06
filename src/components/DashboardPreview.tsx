@@ -25,11 +25,16 @@ export const DashboardPreview: React.FC = () => {
   }, []);
 
   return (
-    <section id="dashboard-preview" className="bg-white py-24 pt-0">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ paddingTop: 0 }}>
+    <section id="dashboard-preview" className="bg-white py-24 pt-0 relative overflow-hidden">
+      {/* Floating Background Glow */}
+      <div className="absolute -top-20 -left-20 w-80 h-80 bg-blue-200/20 rounded-full blur-3xl animate-[float_6s_ease-in-out_infinite]"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-200/20 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" style={{ paddingTop: 0 }}>
+        {/* Section Header */}
         <div
-          className={`text-center mb-16 transition-all duration-700 transform ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`text-center mb-16 transition-all duration-1000 transform ${
+            isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
           }`}
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -40,15 +45,15 @@ export const DashboardPreview: React.FC = () => {
           </p>
         </div>
 
+        {/* Dashboard Card */}
         <div
           ref={dashboardRef}
           className={`relative transition-all duration-1000 transform ${
             isVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-10'
           }`}
         >
-          {/* Main Dashboard Container */}
-          <div className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-200">
-            {/* Dashboard Header */}
+          <div className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-200 animate-[pulseBorder_3s_infinite]">
+            {/* Header */}
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900">Analytics Dashboard</h3>
@@ -71,7 +76,8 @@ export const DashboardPreview: React.FC = () => {
               ].map((stat, index) => (
                 <div
                   key={index}
-                  className={`rounded-xl p-6 transform transition-all duration-300 hover:scale-105 border border-gray-200 ${
+                  style={{ transitionDelay: `${index * 200}ms` }}
+                  className={`rounded-xl p-6 transform transition-all duration-700 hover:shadow-[0_0_20px_rgba(33,150,243,0.3)] hover:scale-105 border border-gray-200 ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
                   }`}
                 >
@@ -85,12 +91,12 @@ export const DashboardPreview: React.FC = () => {
               ))}
             </div>
 
-            {/* Chart Area */}
+            {/* Chart & Chat */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Chart 1 */}
+              {/* Chart */}
               <div
-                className={`bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 hover:scale-105 ${
-                  isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+                className={`bg-white rounded-xl p-6 border border-gray-200 transition-all duration-700 hover:shadow-[0_0_20px_rgba(33,150,243,0.3)] hover:scale-105 ${
+                  isVisible ? 'opacity-100 translate-x-0 blur-0' : 'opacity-0 translate-x-10 blur-sm'
                 }`}
               >
                 <div className="flex items-center justify-between mb-6">
@@ -110,10 +116,7 @@ export const DashboardPreview: React.FC = () => {
                       <div className="flex-1 bg-gray-100 rounded-full h-3 overflow-hidden">
                         <div
                           className={`h-full ${bar.color} rounded-full transition-all duration-1000 ease-out`}
-                          style={{
-                            width: `${bar.value}%`,
-                            animationDelay: `${index * 200}ms`
-                          }}
+                          style={{ width: isVisible ? `${bar.value}%` : '0%', transitionDelay: `${index * 200}ms` }}
                         ></div>
                       </div>
                       <div className="w-12 text-gray-500 text-sm text-right">{bar.value}%</div>
@@ -124,8 +127,8 @@ export const DashboardPreview: React.FC = () => {
 
               {/* Chat Preview */}
               <div
-                className={`bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 hover:scale-105 ${
-                  isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+                className={`bg-white rounded-xl p-6 border border-gray-200 transition-all duration-700 hover:shadow-[0_0_20px_rgba(33,150,243,0.3)] hover:scale-105 ${
+                  isVisible ? 'opacity-100 translate-x-0 blur-0' : 'opacity-0 -translate-x-10 blur-sm'
                 }`}
               >
                 <div className="flex items-center justify-between mb-6">
@@ -142,11 +145,18 @@ export const DashboardPreview: React.FC = () => {
                     { type: 'ai', message: 'We\'re open Monday-Friday 9AM-6PM EST. Is there anything specific you\'d like to know about our services?' },
                     { type: 'user', message: 'Do you offer enterprise plans?' },
                   ].map((chat, index) => (
-                    <div key={index} className={`flex ${chat.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-xs px-4 py-2 rounded-lg ${chat.type === 'user'
+                    <div
+                      key={index}
+                      style={{ transitionDelay: `${index * 200}ms` }}
+                      className={`flex transition-all duration-700 transform ${
+                        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                      } ${chat.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                    >
+                      <div className={`max-w-xs px-4 py-2 rounded-lg ${
+                        chat.type === 'user'
                           ? 'bg-blue-600 text-white'
                           : 'bg-gray-100 text-gray-800'
-                        }`}>
+                      }`}>
                         <p className="text-sm">{chat.message}</p>
                       </div>
                     </div>
@@ -156,8 +166,18 @@ export const DashboardPreview: React.FC = () => {
             </div>
           </div>
         </div>
-
       </div>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes pulseBorder {
+          0%, 100% { box-shadow: 0 0 0 rgba(33,150,243,0); }
+          50% { box-shadow: 0 0 25px rgba(33,150,243,0.15); }
+        }
+      `}</style>
     </section>
   );
 };

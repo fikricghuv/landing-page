@@ -30,7 +30,7 @@ export const ROISimulation: React.FC = () => {
         };
     }, []);
 
-    // Formula kalkulasi (contoh asumsi)
+    // Formula kalkulasi
     const costPerAgent = salary;
     const currentCost = teamSize * costPerAgent;
     const automationRate = 0.7; // 70% otomatisasi
@@ -38,12 +38,44 @@ export const ROISimulation: React.FC = () => {
     const newResolutionTime = resolutionTime * 0.5; // 50% lebih cepat
     const paybackPeriod = (currentCost * 0.3) / (savings / 12); // bulan
 
+    // Animated values
+    const [animatedValues, setAnimatedValues] = useState({
+        savings: 0,
+        reduction: 0,
+        newTime: 0,
+        payback: 0
+    });
+
+    // Animate numbers when visible
+    useEffect(() => {
+        if (isVisible) {
+            const duration = 1200; // ms
+            const startTime = performance.now();
+
+            const animate = (now: number) => {
+                const progress = Math.min((now - startTime) / duration, 1);
+
+                setAnimatedValues({
+                    savings: Math.floor(progress * savings),
+                    reduction: Math.floor(progress * (automationRate * 100)),
+                    newTime: parseFloat((progress * newResolutionTime).toFixed(1)),
+                    payback: parseFloat((progress * paybackPeriod).toFixed(1))
+                });
+
+                if (progress < 1) requestAnimationFrame(animate);
+            };
+
+            requestAnimationFrame(animate);
+        }
+    }, [isVisible, savings, automationRate, newResolutionTime, paybackPeriod]);
+
     return (
         <section
             id="calculate-roi"
             ref={sectionRef}
-            className={`py-24 bg-gray-50 scroll-mt-12 transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
+            className={`py-24 bg-gray-50 scroll-mt-12 transition-all duration-1000 transform ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
             style={{ backgroundColor: '#e3f2fd' }}
         >
             {/* ✅ SEO Helmet */}
@@ -62,12 +94,13 @@ export const ROISimulation: React.FC = () => {
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://talkvera.com/features" />
             </Helmet>
-            {/* Decorative Background */}
+
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Title */}
                 <div
-                    className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-                        }`}
+                    className={`text-center mb-16 transition-all duration-1000 ${
+                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+                    }`}
                 >
                     <h2 className="text-4xl font-bold text-gray-900 mb-4">
                         Calculate Your ROI
@@ -79,13 +112,15 @@ export const ROISimulation: React.FC = () => {
 
                 {/* Card */}
                 <div
-                    className={`bg-white shadow-lg rounded-2xl p-8 lg:p-12 transition-all duration-1000 transform ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                        }`}
+                    className={`bg-white shadow-lg rounded-2xl p-8 lg:p-12 transition-all duration-1000 transform ${
+                        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                    }`}
                 >
                     <div className="grid md:grid-cols-2 gap-8">
                         {/* Left: Inputs */}
-                        <div className={`transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-                            }`}>
+                        <div className={`transition-all duration-1000 delay-100 ${
+                            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+                        }`}>
                             <h3 className="text-2xl font-semibold text-gray-800 mb-6">Current Situation</h3>
                             <div className="space-y-6">
                                 <div>
@@ -99,7 +134,6 @@ export const ROISimulation: React.FC = () => {
                                         value={ticketVolume}
                                         onChange={(e) => setTicketVolume(Number(e.target.value))}
                                     />
-
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -141,31 +175,32 @@ export const ROISimulation: React.FC = () => {
                         </div>
 
                         {/* Right: Results */}
-                        <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-                            }`}>
+                        <div className={`transition-all duration-1000 delay-200 ${
+                            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+                        }`}>
                             <h3 className="text-2xl font-semibold text-gray-800 mb-6">Projected Savings</h3>
                             <div className="space-y-6">
                                 <div className="bg-green-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
                                     <div className="text-3xl font-bold text-green-600 mb-2">
-                                        ${savings.toLocaleString()}
+                                        ${animatedValues.savings.toLocaleString()}
                                     </div>
                                     <div className="text-sm text-gray-600">Annual Cost Savings</div>
                                 </div>
                                 <div className="bg-blue-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
                                     <div className="text-3xl font-bold text-blue-600 mb-2">
-                                        {(automationRate * 100).toFixed(0)}%
+                                        {animatedValues.reduction}%
                                     </div>
                                     <div className="text-sm text-gray-600">Ticket Volume Reduction</div>
                                 </div>
                                 <div className="bg-yellow-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
                                     <div className="text-3xl font-bold text-yellow-600 mb-2">
-                                        {newResolutionTime.toFixed(1)} mins
+                                        {animatedValues.newTime.toFixed(1)} mins
                                     </div>
                                     <div className="text-sm text-gray-600">New Avg Resolution Time</div>
                                 </div>
                                 <div className="bg-purple-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
                                     <div className="text-3xl font-bold text-purple-600 mb-2">
-                                        {paybackPeriod.toFixed(1)} months
+                                        {animatedValues.payback.toFixed(1)} months
                                     </div>
                                     <div className="text-sm text-gray-600">Payback Period</div>
                                 </div>
