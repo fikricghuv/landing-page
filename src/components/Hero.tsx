@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Play, ArrowRight, Bot, User } from 'lucide-react';
 import { Helmet } from 'react-helmet';
+import Lottie from 'lottie-react';
+import animationData from '../../assets/animation.json';
 
 export const Hero: React.FC = () => {
   const [visibleMessages, setVisibleMessages] = useState<number[]>([]);
@@ -70,6 +72,7 @@ export const Hero: React.FC = () => {
         ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95'}
       `}
     >
+
       {/* ✅ SEO Helmet */}
       <Helmet>
         <title>Talkvera - AI-Powered Customer Service Platform</title>
@@ -88,13 +91,6 @@ export const Hero: React.FC = () => {
         <meta property="og:url" content="https://talkvera.com" />
       </Helmet>
 
-      {/* === SISA HERO CONTENT === */}
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
         <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
           {/* LEFT CONTENT */}
@@ -112,7 +108,14 @@ export const Hero: React.FC = () => {
                 with real-time monitoring and analytics that transform how you connect with customers.
               </p>
 
-              <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <Lottie
+                animationData={animationData}
+                loop
+                autoplay
+                className="w-[250px] h-[250px]"
+              />
+
+              <div className="mt-1 flex flex-col sm:flex-row gap-4">
                 <button className="group bg-green-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-green-600 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -126,7 +129,7 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* RIGHT CHAT DEMO */}
-          <div className="mt-16 lg:mt-0 lg:col-span-6 relative">
+          <div className="mt-16 lg:mt-0 lg:col-span-6 relative" style={{ top: '-1rem'}}>
             <div className="relative bg-white rounded-lg shadow-2xl overflow-visible max-w-sm mx-auto">
               {/* Header */}
               <div className="p-4 flex items-center bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] rounded-t-lg">

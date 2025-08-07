@@ -26,7 +26,7 @@ export const CTA: React.FC = () => {
     <section
       ref={sectionRef}
       id="contact"
-      className={`relative py-24 scroll-mt-12 bg-gradient-to-br from-[#0d47a1] via-[#2196f3] to-[#1976d2] overflow-hidden transition-all duration-1000 transform ${
+      className={`relative py-24 scroll-mt-12 bg-gradient-to-br from-[#0d47a1] via-[#2196f3] to-[#1976d2] transition-all duration-1000 transform ${
         isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
       }`}
     >

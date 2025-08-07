@@ -38,17 +38,10 @@ export const Navigation: React.FC = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <img
-              src="/assets/just-logo.png" 
+              src={isScrolled ? '/assets/logo/logo-talkvera-black.svg' : '/assets/logo/logo-talkvera-white.svg'}
               alt="Talkvera Logo"
-              className="h-8 w-8"
+              className="h-10 w-auto"
             />
-            <span
-              className={`text-2xl font-bold
-                ${isScrolled ? 'text-gray-900' : 'text-white'}
-              `}
-            >
-              Talkvera
-            </span>
           </div>
 
           {/* Desktop Menu */}
@@ -58,7 +51,7 @@ export const Navigation: React.FC = () => {
                 <button
                   key={item}
                   onClick={() => handleScrollTo(item.toLowerCase().replace(/\s+/g, '-'))}
-                  className={`px-3 py-2 text-sm font-medium transition-transform duration-300 hover:scale-110
+                  className={`px-3 py-2 text-m font-medium transition-transform duration-300 hover:scale-110
                     ${isScrolled ? 'text-gray-900' : 'text-white'}
                   `}
                 >

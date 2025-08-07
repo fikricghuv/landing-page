@@ -60,9 +60,9 @@ export const DashboardPreview: React.FC = () => {
                 <p className="text-gray-500">Real-time customer service insights</p>
               </div>
               <div className="flex space-x-2">
-                <div className="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
-                <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse delay-200"></div>
-                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse delay-400"></div>
+                <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse delay-200"></div>
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse delay-400"></div>
               </div>
             </div>
 

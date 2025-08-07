@@ -102,6 +102,7 @@ export const ROISimulation: React.FC = () => {
                         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
                     }`}
                 >
+
                     <h2 className="text-4xl font-bold text-gray-900 mb-4">
                         Calculate Your ROI
                     </h2>
@@ -116,11 +117,21 @@ export const ROISimulation: React.FC = () => {
                         isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                     }`}
                 >
+                    
+                    <div className="flex justify-end items-right mb-2">
+                        <div className="flex space-x-2">
+                            <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                            <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse [animation-delay:200ms]"></div>
+                            <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse [animation-delay:400ms]"></div>
+                        </div>
+                    </div>
+                    
                     <div className="grid md:grid-cols-2 gap-8">
                         {/* Left: Inputs */}
                         <div className={`transition-all duration-1000 delay-100 ${
                             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
                         }`}>
+                            
                             <h3 className="text-2xl font-semibold text-gray-800 mb-6">Current Situation</h3>
                             <div className="space-y-6">
                                 <div>
