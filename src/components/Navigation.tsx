@@ -38,7 +38,7 @@ export const Navigation: React.FC = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <img
-              src={isScrolled ? '/assets/logo/logo-talkvera-black.svg' : '/assets/logo/logo-talkvera-white.svg'}
+              src={isScrolled ? '/assets/logo/logo-talkvera-color.svg' : '/assets/logo/logo-talkvera-white.svg'}
               alt="Talkvera Logo"
               className="h-10 w-auto"
             />
