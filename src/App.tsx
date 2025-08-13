@@ -8,12 +8,14 @@ import { Testimonials } from './components/Testimonials';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
 import { ChatWidget} from './components/ChatWidget'
+import {ComparisonSection } from './components/FeatureComparison'
 
 function App() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
       <Hero />
+      <ComparisonSection />
       <Features />
       <HowItWorks />
       <DashboardPreview />
