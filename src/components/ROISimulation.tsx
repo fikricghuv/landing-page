@@ -2,15 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 
 export const ROISimulation: React.FC = () => {
-    const [ticketVolume, setTicketVolume] = useState<number>(5000);
-    const [teamSize, setTeamSize] = useState<number>(8);
-    const [resolutionTime, setResolutionTime] = useState<number>(15);
-    const [salary, setSalary] = useState<number>(45000);
+    const [ticketVolume, setTicketVolume] = useState<number>(1000); 
+    const [teamSize, setTeamSize] = useState<number>(10); 
+    const [resolutionTime, setResolutionTime] = useState<number>(10); 
+    const [salary, setSalary] = useState<number>(3852); 
     const [isVisible, setIsVisible] = useState(false);
 
     const sectionRef = useRef<HTMLDivElement | null>(null);
 
-    // Observer for scroll animation
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -33,12 +32,11 @@ export const ROISimulation: React.FC = () => {
     // Formula kalkulasi
     const costPerAgent = salary;
     const currentCost = teamSize * costPerAgent;
-    const automationRate = 0.7; // 70% otomatisasi
+    const automationRate = 0.65; 
     const savings = currentCost * automationRate;
-    const newResolutionTime = resolutionTime * 0.5; // 50% lebih cepat
-    const paybackPeriod = (currentCost * 0.3) / (savings / 12); // bulan
+    const newResolutionTime = resolutionTime * 0.55; 
+    const paybackPeriod = (currentCost * 0.35) / (savings / 12);
 
-    // Animated values
     const [animatedValues, setAnimatedValues] = useState({
         savings: 0,
         reduction: 0,
@@ -46,7 +44,6 @@ export const ROISimulation: React.FC = () => {
         payback: 0
     });
 
-    // Animate numbers when visible
     useEffect(() => {
         if (isVisible) {
             const duration = 1200; // ms
@@ -141,7 +138,7 @@ export const ROISimulation: React.FC = () => {
                                     <input
                                         type="number"
                                         className="input-field w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary/30"
-                                        placeholder="e.g., 5000"
+                                        placeholder="e.g., 12000"
                                         value={ticketVolume}
                                         onChange={(e) => setTicketVolume(Number(e.target.value))}
                                     />
@@ -153,7 +150,7 @@ export const ROISimulation: React.FC = () => {
                                     <input
                                         type="number"
                                         className="input-field w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary/30"
-                                        placeholder="e.g., 8"
+                                        placeholder="e.g., 15"
                                         value={teamSize}
                                         onChange={(e) => setTeamSize(Number(e.target.value))}
                                     />
@@ -165,7 +162,7 @@ export const ROISimulation: React.FC = () => {
                                     <input
                                         type="number"
                                         className="input-field w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary/30"
-                                        placeholder="e.g., 15"
+                                        placeholder="e.g., 18"
                                         value={resolutionTime}
                                         onChange={(e) => setResolutionTime(Number(e.target.value))}
                                     />
@@ -177,7 +174,7 @@ export const ROISimulation: React.FC = () => {
                                     <input
                                         type="number"
                                         className="input-field w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary/30"
-                                        placeholder="e.g., 45000"
+                                        placeholder="e.g., 52000"
                                         value={salary}
                                         onChange={(e) => setSalary(Number(e.target.value))}
                                     />
@@ -191,25 +188,25 @@ export const ROISimulation: React.FC = () => {
                         }`}>
                             <h3 className="text-2xl font-semibold text-gray-800 mb-6">Projected Savings</h3>
                             <div className="space-y-6">
-                                <div className="bg-green-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                                <div className="bg-green-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
                                     <div className="text-3xl font-bold text-green-600 mb-2">
                                         ${animatedValues.savings.toLocaleString()}
                                     </div>
                                     <div className="text-sm text-gray-600">Annual Cost Savings</div>
                                 </div>
-                                <div className="bg-blue-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                                <div className="bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
                                     <div className="text-3xl font-bold text-blue-600 mb-2">
                                         {animatedValues.reduction}%
                                     </div>
                                     <div className="text-sm text-gray-600">Ticket Volume Reduction</div>
                                 </div>
-                                <div className="bg-yellow-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                                <div className="bg-yellow-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
                                     <div className="text-3xl font-bold text-yellow-600 mb-2">
                                         {animatedValues.newTime.toFixed(1)} mins
                                     </div>
                                     <div className="text-sm text-gray-600">New Avg Resolution Time</div>
                                 </div>
-                                <div className="bg-purple-50 p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                                <div className="bg-purple-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
                                     <div className="text-3xl font-bold text-purple-600 mb-2">
                                         {animatedValues.payback.toFixed(1)} months
                                     </div>
@@ -218,6 +215,12 @@ export const ROISimulation: React.FC = () => {
                             </div>
                         </div>
                     </div>
+
+                    {/* Disclaimer */}
+                    <p className="mt-8 text-xs text-gray-500">
+                        *Disclaimer: The figures above are average estimates based on industry benchmarks (Gartner, Zendesk, Freshdesk).
+                        Actual results may vary depending on location, business scale, and support complexity.
+                    </p>
                 </div>
             </div>
         </section>

@@ -13,32 +13,32 @@ const features = [
   {
     icon: BarChart3,
     title: "Dashboard Overview",
-    description: "View AI agent performance metrics including response time, error rate, and top questions."
+    description: "Get instant visibility into your chatbot’s performance—track response time, top questions, and overall effectiveness."
   },
   {
     icon: Activity,
     title: "Real-Time Monitoring",
-    description: "Stream live chats, track resource usage, and review agent activity logs in real time."
+    description: "Stay in control by watching live conversations and system usage as they happen."
   },
   {
     icon: Edit3,
     title: "Prompt Editor",
-    description: "Customize your AI tone, style, and domain settings effortlessly."
+    description: "Shape your chatbot’s personality—tone, style, and expertise—so it speaks in your brand’s voice."
   },
   {
     icon: Database,
     title: "Knowledge Base Management",
-    description: "Upload and manage AI knowledge sources."
+    description: "Empower your chatbot with the right knowledge by easily uploading and organizing company resources."
   },
   {
     icon: MessageCircle,
     title: "User Feedback & Analytics",
-    description: "Track user complaint and take potential action to resolve issues."
+    description: "Measure user satisfaction, understand their needs, and uncover opportunities to improve engagement."
   },
   {
     icon: WrapText,
     title: "Reporting & Insights",
-    description: "Generate detailed reports on AI performance, user interactions, and knowledge base effectiveness."
+    description: "Turn chatbot interaction data into actionable insights that boost performance and user experience."
   }
 ];
 

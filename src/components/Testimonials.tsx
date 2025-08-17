@@ -3,25 +3,25 @@ import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "Talkvera transformed our customer support efficiency by 60% in just 3 months!",
-    author: "CEO, InsurePlus",
-    rating: 5,
-    company: "InsurePlus",
-    industry: "Insurance"
-  },
-  {
-    quote: "The real-time monitoring and AI analytics are a game changer for our support team.",
-    author: "Head of Customer Experience, SafeLife Insurance",
+    quote: "Talkvera reduced our average response time from 2 minutes to under 15 seconds. Our customers immediately noticed the difference.",
+    author: "Head of Operations, SafeLife Insurance",
     rating: 5,
     company: "SafeLife Insurance",
     industry: "Insurance"
   },
   {
-    quote: "We love the multi-tenant feature – managing clients has never been easier.",
-    author: "Founder, ServiceHub",
+    quote: "Within 3 months, our support tickets dropped by 40% because customers got instant answers from Talkvera.",
+    author: "Customer Experience Lead, Guardian Assurance",
     rating: 5,
-    company: "ServiceHub",
-    industry: "Technology"
+    company: "Guardian Assurance",
+    industry: "Insurance"
+  },
+  {
+    quote: "The AI-powered conversations feel natural. Our retention rates improved because customers finally felt heard 24/7.",
+    author: "CEO, InsurePlus",
+    rating: 5,
+    company: "InsurePlus",
+    industry: "Insurance"
   }
 ];
 

@@ -1,9 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { BarChart3, TrendingUp, MessageSquare, Clock, Users, CheckCircle } from 'lucide-react';
+import { BarChart3, TrendingUp, MessageSquare, Clock, Users, CheckCircle, MessageCircle } from 'lucide-react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 export const DashboardPreview: React.FC = () => {
   const dashboardRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+
+  const responseData = [
+    { day: "Mon", time: 2.3 },
+    { day: "Tue", time: 1.8 },
+    { day: "Wed", time: 3.1 },
+    { day: "Thu", time: 1.5 },
+    { day: "Fri", time: 2.0 },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,15 +36,11 @@ export const DashboardPreview: React.FC = () => {
   return (
     <section id="dashboard-preview" className="bg-white py-24 pt-0 relative overflow-hidden">
       {/* Floating Background Glow */}
-      <div className="absolute -top-20 -left-20 w-80 h-80 bg-blue-200/20 rounded-full blur-3xl animate-[float_6s_ease-in-out_infinite]"></div>
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-200/20 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]"></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" style={{ paddingTop: 0 }}>
         {/* Section Header */}
         <div
-          className={`text-center mb-16 transition-all duration-1000 transform ${
-            isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
-          }`}
+          className={`text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
+            }`}
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Powerful Dashboard at Your Fingertips
@@ -48,9 +53,8 @@ export const DashboardPreview: React.FC = () => {
         {/* Dashboard Card */}
         <div
           ref={dashboardRef}
-          className={`relative transition-all duration-1000 transform ${
-            isVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-10'
-          }`}
+          className={`relative transition-all duration-1000 transform ${isVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-10'
+            }`}
         >
           <div className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-200 animate-[pulseBorder_3s_infinite]">
             {/* Header */}
@@ -71,15 +75,14 @@ export const DashboardPreview: React.FC = () => {
               {[
                 { icon: MessageSquare, value: '2,847', label: 'Total Conversations', color: 'text-blue-500' },
                 { icon: CheckCircle, value: '21', label: 'Total Feedbacks', color: 'text-green-500' },
-                { icon: Clock, value: '0.8s', label: 'Avg Response Time', color: 'text-purple-500' },
-                { icon: Users, value: '1,234', label: 'Active Users', color: 'text-yellow-500' }
+                { icon: Clock, value: '1.3s', label: 'Avg Response Time', color: 'text-purple-500' },
+                { icon: Users, value: '1,172', label: 'Active Users', color: 'text-yellow-500' }
               ].map((stat, index) => (
                 <div
                   key={index}
                   style={{ transitionDelay: `${index * 200}ms` }}
-                  className={`rounded-xl p-6 transform transition-all duration-700 hover:shadow-[0_0_20px_rgba(33,150,243,0.3)] hover:scale-105 border border-gray-200 ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-                  }`}
+                  className={`rounded-xl p-6 transform transition-all duration-700 hover:shadow-[0_0_20px_rgba(33,150,243,0.3)] hover:scale-105 border border-gray-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+                    }`}
                 >
                   <div className="flex items-center justify-between mb-3">
                     <stat.icon className={`h-8 w-8 ${stat.color}`} />
@@ -96,40 +99,72 @@ export const DashboardPreview: React.FC = () => {
               {/* Chart */}
               <div
                 className={`bg-white rounded-xl p-6 border border-gray-200 transition-all duration-700 hover:shadow-[0_0_20px_rgba(33,150,243,0.3)] hover:scale-105 ${
-                  isVisible ? 'opacity-100 translate-x-0 blur-0' : 'opacity-0 translate-x-10 blur-sm'
+                  isVisible ? "opacity-100 translate-x-0 blur-0" : "opacity-0 translate-x-10 blur-sm"
                 }`}
               >
                 <div className="flex items-center justify-between mb-6">
                   <h4 className="text-lg font-semibold text-gray-900">Response Time Trends</h4>
                   <BarChart3 className="h-5 w-5 text-blue-500" />
                 </div>
+                <div className="h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={responseData}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                      <XAxis dataKey="day" stroke="#6b7280" />
+                      <YAxis stroke="#6b7280" label={{ value: "Seconds", angle: -90, position: "insideLeft" }} />
+                      <Tooltip />
+                      <Line
+                        type="monotone"
+                        dataKey="time"
+                        stroke="#2196f3"
+                        strokeWidth={3}
+                        dot={{ r: 5, fill: "#2196f3" }}
+                        activeDot={{ r: 7, fill: "#0d47a1" }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+
+              <div
+                className={`bg-white rounded-xl p-6 border border-gray-200 transition-all duration-700 hover:shadow-[0_0_20px_rgba(33,150,243,0.3)] hover:scale-105 ${
+                  isVisible ? 'opacity-100 translate-x-0 blur-0' : 'opacity-0 translate-x-10 blur-sm'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900">Most Asked Questions by Category</h4>
+                  <MessageCircle className="h-5 w-5 text-blue-500" />
+                </div>
                 <div className="space-y-4">
                   {[
-                    { label: 'Mon', value: 85, color: 'bg-blue-500' },
-                    { label: 'Tue', value: 92, color: 'bg-green-500' },
-                    { label: 'Wed', value: 78, color: 'bg-yellow-500' },
-                    { label: 'Thu', value: 96, color: 'bg-green-500' },
-                    { label: 'Fri', value: 88, color: 'bg-blue-500' },
+                    { label: 'Order Status', value: 42, color: 'bg-blue-500' },
+                    { label: 'Returns & Refunds', value: 28, color: 'bg-green-500' },
+                    { label: 'Shipping Info', value: 18, color: 'bg-yellow-500' },
+                    { label: 'Payment Issues', value: 7, color: 'bg-red-500' },
+                    { label: 'Product Details', value: 5, color: 'bg-purple-500' },
                   ].map((bar, index) => (
                     <div key={bar.label} className="flex items-center space-x-4">
-                      <div className="w-8 text-gray-500 text-sm">{bar.label}</div>
+                      <div className="w-28 text-gray-700 text-sm font-medium">{bar.label}</div>
                       <div className="flex-1 bg-gray-100 rounded-full h-3 overflow-hidden">
                         <div
                           className={`h-full ${bar.color} rounded-full transition-all duration-1000 ease-out`}
-                          style={{ width: isVisible ? `${bar.value}%` : '0%', transitionDelay: `${index * 200}ms` }}
+                          style={{
+                            width: isVisible ? `${bar.value}%` : '0%',
+                            transitionDelay: `${index * 200}ms`,
+                          }}
                         ></div>
                       </div>
-                      <div className="w-12 text-gray-500 text-sm text-right">{bar.value}%</div>
+                      <div className="w-10 text-gray-600 text-sm text-right">{bar.value}%</div>
                     </div>
                   ))}
                 </div>
               </div>
 
+
               {/* Chat Preview */}
-              <div
-                className={`bg-white rounded-xl p-6 border border-gray-200 transition-all duration-700 hover:shadow-[0_0_20px_rgba(33,150,243,0.3)] hover:scale-105 ${
-                  isVisible ? 'opacity-100 translate-x-0 blur-0' : 'opacity-0 -translate-x-10 blur-sm'
-                }`}
+              {/* <div
+                className={`bg-white rounded-xl p-6 border border-gray-200 transition-all duration-700 hover:shadow-[0_0_20px_rgba(33,150,243,0.3)] hover:scale-105 ${isVisible ? 'opacity-100 translate-x-0 blur-0' : 'opacity-0 -translate-x-10 blur-sm'
+                  }`}
               >
                 <div className="flex items-center justify-between mb-6">
                   <h4 className="text-lg font-semibold text-gray-900">Live Chat Preview</h4>
@@ -148,21 +183,19 @@ export const DashboardPreview: React.FC = () => {
                     <div
                       key={index}
                       style={{ transitionDelay: `${index * 200}ms` }}
-                      className={`flex transition-all duration-700 transform ${
-                        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                      } ${chat.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                      className={`flex transition-all duration-700 transform ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                        } ${chat.type === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
-                      <div className={`max-w-xs px-4 py-2 rounded-lg ${
-                        chat.type === 'user'
+                      <div className={`max-w-xs px-4 py-2 rounded-lg ${chat.type === 'user'
                           ? 'bg-blue-600 text-white'
                           : 'bg-gray-100 text-gray-800'
-                      }`}>
+                        }`}>
                         <p className="text-sm">{chat.message}</p>
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

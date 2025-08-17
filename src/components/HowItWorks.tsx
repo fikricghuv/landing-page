@@ -5,18 +5,18 @@ import { Helmet } from 'react-helmet';
 const steps = [
   {
     icon: Database,
-    title: "Connect your data and knowledge base",
-    description: "Seamlessly integrate your existing documentation, FAQs, and others"
+    title: "Centralize Your Knowledge",
+    description: "Seamlessly connect FAQs, docs, and resources so your chatbot always has the right answers."
   },
   {
     icon: Settings,
-    title: "Customize your AI agent with prompts and settings",
-    description: "Fine-tune your AI's personality, responses, and behavior to match your brand"
+    title: "Personalize Your AI Agent",
+    description: "Define your AI’s tone, style, and behavior to reflect your brand’s authentic voice and personality."
   },
   {
     icon: TrendingUp,
-    title: "Monitor, analyze, and improve your customer interactions",
-    description: "Track performance metrics and optimize your customer service"
+    title: "Optimize & Grow”",
+    description: "Track conversations, measure performance, and continuously improve your customer experience."
   }
 ];
 
@@ -56,31 +56,28 @@ export const HowItWorks: React.FC = () => {
     <section id="how-it-works" className="py-24 bg-white relative overflow-hidden">
       {/* ✅ SEO Helmet */}
       <Helmet>
-        <title>Talkvera - Revolutionize Your Customer Service</title>
+        <title>How Talkvera Works - Launch Your AI Chatbot in 3 Steps</title>
         <meta
           name="description"
-          content="Explore Talkvera's key features: AI-powered dashboards, real-time monitoring, prompt customization, knowledge base management, user feedback analytics, and insightful reporting."
+          content="See how easy it is to launch Talkvera: connect your data, customize your AI chatbot, and start improving customer experience—all in minutes."
         />
         <meta
           name="keywords"
-          content="Talkvera features, AI chatbot features, customer service automation tools, knowledge base management, real-time analytics, reporting"
+          content="how Talkvera works, AI chatbot setup, customer service automation, connect knowledge base, chatbot customization, chatbot analytics"
         />
         <meta property="og:title" content="Talkvera - AI Customer Service Features" />
         <meta property="og:description" content="Discover Talkvera's essential features that help businesses automate and optimize customer support with AI technology." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://talkvera.com/features" />
+        <meta property="og:url" content="https://talkvera.com/howitworks" />
       </Helmet>
       {/* Decorative Background */}
-      <div className="absolute -top-20 -left-20 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-200/20 rounded-full blur-3xl"></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             How It Works
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Get started with <span className="font-semibold text-blue-600">Talkvera</span> in three simple steps
+            From setup to results—in just three steps.
           </p>
         </div>
 

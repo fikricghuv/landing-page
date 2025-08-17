@@ -22,7 +22,7 @@ export const Navigation: React.FC = () => {
     setIsOpen(false);
   };
 
-  const menuItems = ['Features', 'How It Works', 'Calculate ROI', 'Contact'];
+  const menuItems = ['Why Choose Talkvera', 'Features', 'How It Works', 'Calculate ROI', 'Contact'];
 
   return (
     <nav
@@ -38,7 +38,7 @@ export const Navigation: React.FC = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <img
-              src={isScrolled ? '/assets/logo/logo-talkvera-color.svg' : '/assets/logo/logo-talkvera-white.svg'}
+              src={isScrolled ? '/assets/logo/logo-talkvera-black.svg' : '/assets/logo/logo-talkvera-white.svg'}
               alt="Talkvera Logo"
               className="h-10 w-auto"
             />
@@ -51,7 +51,7 @@ export const Navigation: React.FC = () => {
                 <button
                   key={item}
                   onClick={() => handleScrollTo(item.toLowerCase().replace(/\s+/g, '-'))}
-                  className={`px-3 py-2 text-m font-medium transition-transform duration-300 hover:scale-110
+                  className={`px-3 py-2 text-base font-medium transition-transform duration-300 hover:scale-110
                     ${isScrolled ? 'text-gray-900' : 'text-white'}
                   `}
                 >
@@ -63,13 +63,6 @@ export const Navigation: React.FC = () => {
 
           {/* Right Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button
-              className={`px-4 py-2 text-sm font-medium transition-transform duration-300 hover:scale-110
-                ${isScrolled ? 'text-gray-700' : 'text-white'}
-              `}
-            >
-              Sign In
-            </button>
             <button className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
               Get Started
             </button>
@@ -78,6 +71,7 @@ export const Navigation: React.FC = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
+              aria-label={isOpen ? "Close menu" : "Open menu"}
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 rounded-md transition-transform duration-300 hover:scale-110 ${
                 isScrolled ? 'text-gray-700' : 'text-white'
@@ -102,11 +96,8 @@ export const Navigation: React.FC = () => {
                 {item}
               </button>
             ))}
-            <div className="border-t pt-3 mt-3">
-              <button className="block w-full text-left px-3 py-2 text-gray-700 transition-transform duration-300 hover:scale-105">
-                Sign In
-              </button>
-              <button className="block w-full text-left px-3 py-2 text-gray-700 transition-transform duration-300 hover:scale-105">
+            <div className="border-t pt-3 mt-3 space-y-2">
+              <button className="block w-full text-center px-3 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
                 Get Started
               </button>
             </div>

@@ -5,13 +5,13 @@ import {
 } from "lucide-react";
 
 const features = [
-  { icon: DollarSign, title: "Reducing Cost" },
-  { icon: Zap, title: "Fast Response" },
-  { icon: Clock, title: "Ready 24 Hours" },
-  { icon: BarChart3, title: "Data Analytic" },
-  { icon: Link, title: "Easy Integration" },
-  { icon: Users, title: "Handling Many Customers" },
-  { icon: Smile, title: "Personal Touch" },
+  { icon: DollarSign, title: "Cut Operational Costs" },
+  { icon: Zap, title: "Lightning-Fast Replies" },
+  { icon: Clock, title: "Always-On Support" },
+  { icon: BarChart3, title: "Actionable Analytics" },
+  { icon: Link, title: "Seamless Integration" },
+  { icon: Users, title: "Scale Without Limits" },
+  { icon: Smile, title: "Human-Like Conversations" },
 ];
 
 const comparisonData = {
@@ -44,16 +44,16 @@ export const ComparisonSection: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section id="why-choose-talkvera" className="py-24 bg-white relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute -top-20 -left-20 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-200/20 rounded-full blur-3xl"></div>
 
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900">Feature Comparison</h2>
+          <h2 className="text-4xl font-bold text-gray-900">Why Choose Talkvera?</h2>
           <p className="text-lg text-gray-600">
-            See how Talkvera stacks up against other chatbots and manual service
+            See how Talkvera outperforms traditional chatbots and manual support.
           </p>
         </div>
 
@@ -70,6 +70,7 @@ export const ComparisonSection: React.FC = () => {
                 <th className="text-left py-4 px-6 font-semibold text-gray-700">Features</th>
                 <th className="py-4 px-6 text-center bg-gradient-to-br from-[#0d47a1] via-[#2196f3] to-[#1976d2] text-white font-bold">
                   Talkvera
+                  <span className="ml-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">Best Value</span>
                 </th>
                 <th className="py-4 px-6 text-center font-semibold text-gray-700 bg-gray-100 border-r border-gray-200">Other Chatbots</th>
                 <th className="py-4 px-6 text-center font-semibold text-gray-700 bg-gray-100">Manual (Admin)</th>
@@ -89,6 +90,12 @@ export const ComparisonSection: React.FC = () => {
               ))}
             </tbody>
           </table>
+          {/* Reinforcement microcopy */}
+          <div className="p-6 text-center text-gray-600 text-sm md:text-base">
+            With <span className="font-semibold text-blue-600">Talkvera</span>, you get the
+            speed of automation, the depth of analytics, and the human-like touch that
+            traditional chatbots and manual support can’t match.
+          </div>
         </div>
       </div>
     </section>

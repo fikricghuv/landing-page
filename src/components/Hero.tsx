@@ -44,7 +44,7 @@ export const Hero: React.FC = () => {
           top: chatRef.current.scrollHeight,
           behavior: 'smooth',
         });
-      }, 300);
+      }, 1000);
       return () => clearTimeout(scrollTimeout);
     }
   }, [visibleMessages]);
@@ -98,7 +98,7 @@ export const Hero: React.FC = () => {
             <div className="max-w-2xl">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
                 Revolutionize Your
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-300">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-white to-green-300 animate-gradient-move">
                   Customer Service
                 </span>
                 with Talkvera
@@ -205,6 +205,18 @@ export const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+      {/* Extra animation styles */}
+      <style>{`
+        @keyframes gradient-move {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-gradient-move {
+          background-size: 200% 200%;
+          animation: gradient-move 3s ease infinite;
+        }
+      `}</style>
     </section>
   );
 };

@@ -69,21 +69,21 @@ export const CTA: React.FC = () => {
           {/* Heading with shimmer */}
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight relative">
             Ready to Transform Your
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-white to-blue-300 animate-gradient-move">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-white to-green-300 animate-gradient-move">
               Customer Service?
             </span>
           </h2>
           
           <p className="text-xl text-blue-100 mb-12 leading-relaxed max-w-2xl mx-auto">
-            Join thousands of businesses using Talkvera to deliver exceptional customer experiences with AI-powered automation.
+            Be among the first businesses to revolutionize customer experience with AI-powered automation.
           </p>
 
           {/* Benefits with stagger animation */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              'Free 14-day trial',
-              'No credit card required',
-              'Setup in under 5 minutes'
+              '24/7 Instant Replies',
+              'Human-like Conversations',
+              'Reduce Support Costs'
             ].map((benefit, i) => (
               <div
                 key={benefit}
@@ -103,7 +103,7 @@ export const CTA: React.FC = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
           }`}>
             <button className="group bg-green-500 text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center">
-              Start Free Trial
+              Try Talkvera Free
               <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
             
@@ -117,7 +117,7 @@ export const CTA: React.FC = () => {
           <div className={`mt-12 text-blue-200 text-sm transition-all duration-1000 delay-400 transform ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
           }`}>
-            <p>Trusted by 10,000+ businesses worldwide • SOC 2 Type II Compliant • 99.9% Uptime SLA</p>
+            <p>Built with enterprise-grade security & 99.9% uptime SLA</p>
           </div>
         </div>
       </div>

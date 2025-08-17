@@ -1,19 +1,20 @@
 import React from 'react';
-import { Linkedin, Twitter, Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+// import { Linkedin, Twitter, Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const footerLinks = {
-  'Product': ['Features', 'Pricing', 'Integrations', 'API Documentation'],
-  'Company': ['About Us', 'Careers', 'Blog', 'Press Kit'],
-  'Support': ['Help Center', 'Contact', 'System Status', 'Community'],
-  'Legal': ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'GDPR']
+  'Product': ['Features', 'Pricing', 'API Documentation'],
+  'Company': ['About Us', 'Blog'],
+  'Support': ['Help Center', 'Contact', 'Community'],
+  // 'Legal': ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'GDPR']
 };
 
-const socialLinks = [
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Instagram, href: '#', label: 'Instagram' }
-];
+// const socialLinks = [
+//   { icon: Linkedin, href: '#', label: 'LinkedIn' },
+//   { icon: Twitter, href: '#', label: 'Twitter' },
+//   { icon: Facebook, href: '#', label: 'Facebook' },
+//   { icon: Instagram, href: '#', label: 'Instagram' }
+// ];
 
 export const Footer: React.FC = () => {
   return (
@@ -34,20 +35,20 @@ export const Footer: React.FC = () => {
             <div className="space-y-3 mb-8">
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-blue-400" />
-                <span>hello@talkvera.com</span>
+                <span>support@talkvera.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-blue-400" />
-                <span>+1 (555) 123-4567</span>
+                <span>+62 (821) 222-333</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-5 w-5 text-blue-400" />
-                <span>San Francisco, CA</span>
+                <span>Based in Jakarta, Indonesia</span>
               </div>
             </div>
 
             {/* Social Links */}
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -58,7 +59,7 @@ export const Footer: React.FC = () => {
                   <social.icon className="h-5 w-5" />
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Links Sections */}
@@ -91,7 +92,7 @@ export const Footer: React.FC = () => {
             <div className="lg:flex-1">
               <h4 className="text-white font-semibold mb-2">Stay updated</h4>
               <p className="text-gray-400 mb-4 lg:mb-0">
-                Get the latest updates, tips, and insights delivered to your inbox.
+                Join the waitlist to get early access & product updates.
               </p>
             </div>
             <div className="lg:ml-8">
