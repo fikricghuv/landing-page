@@ -15,12 +15,22 @@ export const ChatWidget: React.FC = () => {
             return;
         }
 
+        // Commented out error timeout logic
+        /*
         const timer = setTimeout(() => {
             if (!loaded) setHasError(true);
         }, 3000);
 
         return () => clearTimeout(timer);
-    }, [isOpen, loaded]);
+        */
+    }, [isOpen]);
+
+    // Commented out auto-reset error when loaded
+    /*
+    useEffect(() => {
+        if (loaded) setHasError(false);
+    }, [loaded]);
+    */
 
     return (
         <>
@@ -44,29 +54,14 @@ export const ChatWidget: React.FC = () => {
                     </button>
                 </div>
 
-                {/* Iframe atau Error Fallback */}
-                {hasError ? (
-                    <div className="flex flex-col items-center justify-center h-full bg-white text-gray-700 text-center">
-                        <Lottie
-                            animationData={animationData}
-                            loop
-                            autoplay
-                            className="w-[200px] h-[200px]"
-                        />
-                        <p className="text-sm text-gray-500">
-                            Please try again later.
-                        </p>
-                    </div>
-                ) : (
-                    <iframe
-                        src="http://localhost:4202"
-                        title="Talkvera Chatbot Demo"
-                        className="w-full h-full border-0"
-                        allow="microphone; camera"
-                        onLoad={() => setLoaded(true)}
-                    />
-                )}
-
+                {/* Iframe */}
+                <iframe
+                    src="http://localhost:4202"
+                    title="Talkvera Chatbot Demo"
+                    className="w-full h-full border-0"
+                    allow="microphone; camera"
+                    onLoad={() => setLoaded(true)}
+                />
             </div>
 
             {/* Floating Button */}

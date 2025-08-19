@@ -197,10 +197,10 @@ export const Hero: React.FC = () => {
             </div>
 
             <div className="absolute -top-4 -right-4 bg-[#e3f2fd] rounded-lg shadow-lg p-3 animate-bounce">
-              <div className="text-sm font-semibold text-green-600">94% Resolution Rate</div>
+              <div className="text-sm font-semibold text-green-600">90%+ Resolution Rate</div>
             </div>
             <div className="absolute -bottom-10 -left-4 bg-[#e3f2fd] rounded-lg shadow-lg p-3 animate-bounce">
-              <div className="text-sm font-semibold text-blue-600">1.2s Response Time</div>
+              <div className="text-sm font-semibold text-blue-600">30s Response Time</div>
             </div>
           </div>
         </div>

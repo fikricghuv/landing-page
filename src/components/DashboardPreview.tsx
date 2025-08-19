@@ -7,11 +7,11 @@ export const DashboardPreview: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const responseData = [
-    { day: "Mon", time: 2.3 },
-    { day: "Tue", time: 1.8 },
-    { day: "Wed", time: 3.1 },
-    { day: "Thu", time: 1.5 },
-    { day: "Fri", time: 2.0 },
+    { day: "Mon", time: 23 },
+    { day: "Tue", time: 18 },
+    { day: "Wed", time: 31 },
+    { day: "Thu", time: 15 },
+    { day: "Fri", time: 20 },
   ];
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export const DashboardPreview: React.FC = () => {
               {[
                 { icon: MessageSquare, value: '2,847', label: 'Total Conversations', color: 'text-blue-500' },
                 { icon: CheckCircle, value: '21', label: 'Total Feedbacks', color: 'text-green-500' },
-                { icon: Clock, value: '1.3s', label: 'Avg Response Time', color: 'text-purple-500' },
+                { icon: Clock, value: '23s', label: 'Avg Response Time', color: 'text-purple-500' },
                 { icon: Users, value: '1,172', label: 'Active Users', color: 'text-yellow-500' }
               ].map((stat, index) => (
                 <div

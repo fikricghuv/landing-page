@@ -40,7 +40,7 @@ export const Navigation: React.FC = () => {
             <img
               src={isScrolled ? '/assets/logo/logo-talkvera-black.svg' : '/assets/logo/logo-talkvera-white.svg'}
               alt="Talkvera Logo"
-              className="h-10 w-auto"
+              className="h-8 w-auto"
             />
           </div>
 
