@@ -29,31 +29,49 @@ export const ROISimulation: React.FC = () => {
         };
     }, []);
 
-    // Formula kalkulasi
+    // ===================== Formula kalkulasi =====================
+
+    // 1) Biaya tim (per bulan)
     const costPerAgentPerMonth = salary / 12; 
     const currentCost = teamSize * costPerAgentPerMonth; 
 
-    // asumsi 65% dari tiket bisa di-handle AI
+    // 2) Asumsi proporsi tiket yang bisa dihandle AI
     const automationRate = 0.80; 
     const ticketsAutomated = ticketVolume * automationRate;
 
-    // biaya hemat dihitung dari agent time yang terpangkas
-    const timeSaved = ticketsAutomated * resolutionTime; // total menit dihemat
-    const savings = currentCost * automationRate; // hemat langsung dari gaji agent
+    // 3) Estimasi token & biaya token
+    //    - avgTokensPerTicket: rata-rata token per tiket (contoh: 10.000 token)
+    //    - tokenPricePer1K: harga per 1.000 token (DALAM RUPIAH). Isi sesuai kontrak/harga aktual.
+    const avgTokensPerTicket = 10000;          // tokens / tiket
+    const tokenPricePer1K = 0;                 // Rp per 1.000 token (ISI sesuai harga)
+    const monthlyTokens = ticketsAutomated * avgTokensPerTicket;
+    const monthlyTokenCost = (monthlyTokens / 1000) * tokenPricePer1K;
 
-    // konstanta waktu resolusi AI (menit)
+    // 4) Biaya maintenance bulanan & biaya implementasi awal (sekali bayar)
+    const monthlyMaintenance = 0;              // Rp / bulan (ISI bila ada)
+    const implementationCost = 50_000_000;     // Rp (sekali bayar)
+
+    // 5) Penghematan kotor dari sisi gaji agent (per bulan)
+    const grossMonthlySavings = currentCost * automationRate;
+
+    // 6) Penghematan bersih setelah biaya AI (per bulan)
+    const netMonthlySavings = Math.max(
+    0,
+    grossMonthlySavings - monthlyTokenCost - monthlyMaintenance
+    );
+
+    // 7) Waktu resolusi baru (AI 1 menit, manusia = input; minimal 1 menit)
     const AI_RESOLUTION_MIN = 1;
-
-    // pakai nilai manusia minimal 1 menit (untuk kasus input 0 atau <1)
     const humanResolution = Math.max(resolutionTime, AI_RESOLUTION_MIN);
-
-    // rata-rata tertimbang: sebagian tiket oleh AI (1 menit), sisanya oleh manusia
     const newResolutionTime =
     automationRate * AI_RESOLUTION_MIN + (1 - automationRate) * humanResolution;
 
+    // 8) Payback period (bulan) = biaya implementasi / penghematan bersih bulanan
+    //    Jika netMonthlySavings <= 0, set 0 agar tidak error saat animasi .toFixed()
+    const paybackPeriod = netMonthlySavings > 0 ? implementationCost / netMonthlySavings : 0;
 
-    // payback = berapa bulan sampai break-even
-    const paybackPeriod = currentCost / (savings || 1); 
+    // =================== END Formula kalkulasi ====================
+
 
     const [animatedValues, setAnimatedValues] = useState({
         savings: 0,
@@ -71,7 +89,7 @@ export const ROISimulation: React.FC = () => {
                 const progress = Math.min((now - startTime) / duration, 1);
 
                 setAnimatedValues({
-                    savings: Math.floor(progress * savings),
+                    savings: Math.floor(progress * netMonthlySavings),
                     reduction: Math.floor(progress * (automationRate * 100)),
                     newTime: parseFloat((progress * newResolutionTime).toFixed(1)),
                     payback: parseFloat((progress * paybackPeriod).toFixed(1))
@@ -82,7 +100,7 @@ export const ROISimulation: React.FC = () => {
 
             requestAnimationFrame(animate);
         }
-    }, [isVisible, savings, automationRate, newResolutionTime, paybackPeriod]);
+    }, [isVisible, netMonthlySavings, automationRate, newResolutionTime, paybackPeriod]);
 
     return (
         <section
