@@ -60,10 +60,16 @@ export const Navigation: React.FC = () => {
               ))}
             </div>
           </div>
-
+          
           {/* Right Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+            <button
+              className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105
+                ${isScrolled
+                  ? 'border border-black text-black hover:bg-black hover:text-white'
+                  : 'border border-white text-white hover:bg-white hover:text-black'
+                }`}
+            >
               Get Started
             </button>
           </div>
@@ -97,7 +103,7 @@ export const Navigation: React.FC = () => {
               </button>
             ))}
             <div className="border-t pt-3 mt-3 space-y-2">
-              <button className="block w-full text-center px-3 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
+              <button className="block w-full text-center px-3 py-2 border border-gray-900 text-gray-900 rounded-lg font-medium hover:bg-gray-900 hover:text-white transition">
                 Get Started
               </button>
             </div>

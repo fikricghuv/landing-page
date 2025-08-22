@@ -15,7 +15,7 @@ const steps = [
   },
   {
     icon: TrendingUp,
-    title: "Optimize & Grow”",
+    title: "Optimize & Grow",
     description: "Track conversations, measure performance, and continuously improve your customer experience."
   }
 ];
@@ -83,7 +83,7 @@ export const HowItWorks: React.FC = () => {
 
         <div className="relative">
           {/* Connection Lines */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] transform -translate-y-1/2 "></div>
+          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#134271] to-[#5B1F39] transform -translate-y-1/2 "></div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative">
             {steps.map((step, index) => (
@@ -100,16 +100,16 @@ export const HowItWorks: React.FC = () => {
               >
                 <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-gray-200 hover:border-blue-200 border border-gray-200">
                   {/* Step Number */}
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] text-white rounded-full text-xl font-bold mb-6 shadow-lg">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white rounded-full text-xl font-bold mb-6 shadow-lg">
                     {index + 1}
                   </div>
                   
                   {/* Icon */}
                   <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:bg-blue-100">
-                    <step.icon className="h-10 w-10 text-blue-600 transition-transform duration-300 group-hover:scale-110" />
+                    <step.icon className="h-10 w-10 text-[#134271] transition-transform duration-300 group-hover:scale-110" />
                   </div>
 
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-[#5B1F39] transition-colors duration-300">
                     {step.title}
                   </h3>
                   
@@ -131,7 +131,7 @@ export const HowItWorks: React.FC = () => {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <button className="bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] text-white px-10 py-4 rounded-xl text-lg font-semibold hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <button className="bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white px-10 py-4 rounded-xl text-lg font-semibold hover:transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
             Start Your Free Trial
           </button>
         </div>

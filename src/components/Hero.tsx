@@ -68,7 +68,7 @@ export const Hero: React.FC = () => {
   return (
     <section
       ref={heroRef}
-      className={`relative min-h-screen bg-gradient-to-br from-[#0d47a1] via-[#2196f3] to-[#1976d2] overflow-hidden transform transition-all duration-700 ease-out
+      className={`relative lg:h-screen min-h-[800px] snap-start bg-gradient-to-br from-[#134271] to-[#5B1F39] overflow-hidden transform transition-all duration-700 ease-out
         ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95'}
       `}
     >
@@ -101,7 +101,9 @@ export const Hero: React.FC = () => {
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-white to-green-300 animate-gradient-move">
                   Customer Service
                 </span>
-                with Talkvera
+                with
+                <span className="font-normal text-white"> Talk</span>
+                <span className="font-bold text-white">VERA</span>
               </h1>
               <p className="mt-6 text-xl text-blue-100 leading-relaxed">
                 AI-powered chatbot platform to handle customer queries efficiently,
@@ -116,10 +118,25 @@ export const Hero: React.FC = () => {
               />
 
               <div className="mt-1 flex flex-col sm:flex-row gap-4">
-                <button className="group bg-green-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-green-600 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center">
-                  Get Started
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <button
+                  className="relative group px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 
+                            transform hover:scale-105 hover:shadow-xl flex items-center justify-center text-white"
+                >
+                  <span
+                    className="absolute inset-0 rounded-xl p-[2px] 
+                              bg-gradient-to-r from-green-500 to-yellow-400"
+                    style={{
+                      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                      WebkitMaskComposite: 'xor',
+                      maskComposite: 'exclude'
+                    }}
+                  />
+                  <span className="relative z-10 flex items-center">
+                    Get Started
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
                 </button>
+
                 <button className="group bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 flex items-center justify-center">
                   <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
                   Watch Demo
@@ -132,7 +149,7 @@ export const Hero: React.FC = () => {
           <div className="mt-16 lg:mt-0 lg:col-span-6 relative" style={{ top: '-1rem'}}>
             <div className="relative bg-white rounded-lg shadow-2xl overflow-visible max-w-sm mx-auto">
               {/* Header */}
-              <div className="p-4 flex items-center bg-gradient-to-r from-[#0d47a1] via-[#2196f3] to-[#1976d2] rounded-t-lg">
+              <div className="p-4 flex items-center bg-gradient-to-br from-[#134271] to-[#5B1F39] rounded-t-lg">
                 <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-3">
                   <Bot className="w-6 h-6 text-white" />
                 </div>

@@ -17,7 +17,7 @@ const features = [
 const comparisonData = {
   talkvera: ["✔","✔","✔","✔","✔","✔","✔"],
   others:   ["✔","✔","✔","✘","✘","✔","✘"],
-  manual:   ["✘","✘","✘","✔","✘","✘","✘"]
+  manual:   ["✘","✘","✘","✔","✘","✘","✔"]
 };
 
 export const ComparisonSection: React.FC = () => {
@@ -68,7 +68,7 @@ export const ComparisonSection: React.FC = () => {
             <thead>
               <tr>
                 <th className="text-left py-4 px-6 font-semibold text-gray-700">Features</th>
-                <th className="py-4 px-6 text-center bg-gradient-to-br from-[#0d47a1] via-[#2196f3] to-[#1976d2] text-white font-bold">
+                <th className="py-4 px-6 text-center bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white font-bold">
                   Talkvera
                   <span className="ml-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">Best Value</span>
                 </th>

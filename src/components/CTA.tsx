@@ -26,7 +26,7 @@ export const CTA: React.FC = () => {
     <section
       ref={sectionRef}
       id="contact"
-      className={`relative py-24 scroll-mt-12 bg-gradient-to-br from-[#0d47a1] via-[#2196f3] to-[#1976d2] transition-all duration-1000 transform ${
+      className={`relative py-24 scroll-mt-12 bg-gradient-to-br from-[#134271] to-[#5B1F39] transition-all duration-1000 transform ${
         isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
       }`}
     >
@@ -74,7 +74,7 @@ export const CTA: React.FC = () => {
             </span>
           </h2>
           
-          <p className="text-xl text-blue-100 mb-12 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xl text-white mb-12 leading-relaxed max-w-2xl mx-auto">
             Be among the first businesses to revolutionize customer experience with AI-powered automation.
           </p>
 
@@ -87,7 +87,7 @@ export const CTA: React.FC = () => {
             ].map((benefit, i) => (
               <div
                 key={benefit}
-                className={`flex items-center justify-center space-x-2 text-blue-100 transition-all duration-700 transform ${
+                className={`flex items-center justify-center space-x-2 text-white transition-all duration-700 transform ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
                 }`}
                 style={{ transitionDelay: `${i * 200 + 300}ms` }}
@@ -102,9 +102,28 @@ export const CTA: React.FC = () => {
           <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 delay-300 transform ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
           }`}>
-            <button className="group bg-green-500 text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center">
+            {/* <button className="group bg-green-500 text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center">
               Try Talkvera Free
               <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </button> */}
+
+            <button
+              className="relative group px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 
+                        transform hover:scale-105 hover:shadow-xl flex items-center justify-center text-white"
+            >
+              <span
+                className="absolute inset-0 rounded-xl p-[2px] 
+                          bg-gradient-to-r from-[#45C54B] to-[#BCDD43]"
+                style={{
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  maskComposite: 'exclude'
+                }}
+              />
+              <span className="relative z-10 flex items-center">
+                Try Talkvera Free
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
             </button>
             
             <button className="group bg-white/10 backdrop-blur-sm text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 flex items-center">
@@ -114,7 +133,7 @@ export const CTA: React.FC = () => {
           </div>
 
           {/* Footer Info */}
-          <div className={`mt-12 text-blue-200 text-sm transition-all duration-1000 delay-400 transform ${
+          <div className={`mt-12 text-white text-sm transition-all duration-1000 delay-400 transform ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
           }`}>
             <p>Built with enterprise-grade security & 99.9% uptime SLA</p>

@@ -18,7 +18,7 @@ function App() {
       <ComparisonSection />
       <Features />
       <HowItWorks />
-      <DashboardPreview />
+      {/* <DashboardPreview /> */}
       <ROISimulation />
       {/* <Testimonials /> */}
       <CTA />

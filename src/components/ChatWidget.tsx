@@ -47,10 +47,10 @@ export const ChatWidget: React.FC = () => {
                 <div className="absolute top-6 right-3 z-10">
                     <button
                         onClick={() => setIsOpen(false)}
-                        className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition"
+                        className="p-1 hover:bg-gray-100 dark:hover:bg-[#5B1F39] rounded-full transition"
                         aria-label="Close chat"
                     >
-                        <ChevronDown className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                        <ChevronDown className="w-5 h-5 text-gray-700 dark:text-[#134271]" />
                     </button>
                 </div>
 
