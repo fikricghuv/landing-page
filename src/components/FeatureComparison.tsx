@@ -44,7 +44,7 @@ export const ComparisonSection: React.FC = () => {
   };
 
   return (
-    <section id="why-choose-talkvera" className="py-24 bg-white relative overflow-hidden">
+    <section id="why-choose-talkvera" className="relative lg:h-screen min-h-[800px] py-24 bg-white relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute -top-20 -left-20 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-200/20 rounded-full blur-3xl"></div>
@@ -69,8 +69,12 @@ export const ComparisonSection: React.FC = () => {
               <tr>
                 <th className="text-left py-4 px-6 font-semibold text-gray-700">Features</th>
                 <th className="py-4 px-6 text-center bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white font-bold">
-                  Talkvera
-                  <span className="ml-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">Best Value</span>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
+                    <span className="text-xl">Talkvera</span>
+                    <span className="bg-green-500 text-white text-xs sm:text-xs  px-2 py-1 rounded-full whitespace-nowrap">
+                      Best Value
+                    </span>
+                  </div>
                 </th>
                 <th className="py-4 px-6 text-center font-semibold text-gray-700 bg-gray-100 border-r border-gray-200">Other Chatbots</th>
                 <th className="py-4 px-6 text-center font-semibold text-gray-700 bg-gray-100">Manual (Admin)</th>

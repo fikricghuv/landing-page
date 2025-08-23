@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Play, CheckCircle } from 'lucide-react';
 import { Helmet } from 'react-helmet';
+import { Link } from "react-router-dom";
 
 export const CTA: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -107,7 +108,8 @@ export const CTA: React.FC = () => {
               <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
             </button> */}
 
-            <button
+            <Link
+              to="/get-started"
               className="relative group px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 
                         transform hover:scale-105 hover:shadow-xl flex items-center justify-center text-white"
             >
@@ -124,12 +126,12 @@ export const CTA: React.FC = () => {
                 Try Talkvera Free
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
-            </button>
+            </Link>
             
-            <button className="group bg-white/10 backdrop-blur-sm text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 flex items-center">
+            {/* <button className="group bg-white/10 backdrop-blur-sm text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 flex items-center">
               <Play className="mr-3 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
               Book a Demo
-            </button>
+            </button> */}
           </div>
 
           {/* Footer Info */}

@@ -106,7 +106,7 @@ export const ROISimulation: React.FC = () => {
         <section
             id="calculate-roi"
             ref={sectionRef}
-            className={`py-24 bg-gradient-to-br from-[#ebf5ffff] to-[#f9e6e6ff] scroll-mt-12 transition-all duration-1000 transform ${
+            className={`relative min-h-[800px] lg:min-h-screen py-24 flex flex-col justify-center bg-gradient-to-br from-[#ebf5ffff] to-[#f9e6e6ff] scroll-mt-12 transition-all duration-1000 transform ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
         >

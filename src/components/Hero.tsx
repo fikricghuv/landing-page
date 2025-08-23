@@ -3,6 +3,7 @@ import { Play, ArrowRight, Bot, User } from 'lucide-react';
 import { Helmet } from 'react-helmet';
 import Lottie from 'lottie-react';
 import animationData from '../../assets/animation.json';
+import { Link } from "react-router-dom";
 
 export const Hero: React.FC = () => {
   const [visibleMessages, setVisibleMessages] = useState<number[]>([]);
@@ -118,7 +119,8 @@ export const Hero: React.FC = () => {
               />
 
               <div className="mt-1 flex flex-col sm:flex-row gap-4">
-                <button
+                <Link
+                  to="/get-started"
                   className="relative group px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 
                             transform hover:scale-105 hover:shadow-xl flex items-center justify-center text-white"
                 >
@@ -135,12 +137,14 @@ export const Hero: React.FC = () => {
                     Get Started
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
-                </button>
+                </Link>
 
-                <button className="group bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 flex items-center justify-center">
+                <Link
+                  to="/watch-demo"
+                  className="group bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 flex items-center justify-center">
                   <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
                   Watch Demo
-                </button>
+                </Link>
               </div>
             </div>
           </div>
