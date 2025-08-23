@@ -70,9 +70,17 @@ Visit the live site: [https://iridescent-bonbon-e9c3dd.netlify.app](https://irid
    ```bash
    npm run dev
    ```
+4. **Start service**
+   source venv/bin/activate
 
-4. **Open your browser**
+   pip install -r requirments.txt
+
+   uvicorn backend.main:app --reload
+
+5. **Open your browser**
    Navigate to `http://localhost:5173` to view the application
+
+
 
 ### Available Scripts
 

@@ -111,10 +111,16 @@ export const HowItWorks: React.FC = () => {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <Link to="/free-trial" className="bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white px-10 py-4 rounded-xl text-lg font-semibold hover:transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <Link
+            to="/free-trial"
+            className="bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg
+                      transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+          >
             Start Your Free Trial
           </Link>
+
         </div>
+
       </div>
 
     </section>

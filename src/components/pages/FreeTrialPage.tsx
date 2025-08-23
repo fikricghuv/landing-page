@@ -1,12 +1,48 @@
 // src/pages/FreeTrialPage.tsx
-import React from "react";
+import React, { useState } from "react";
 import { User, Mail, Briefcase } from "lucide-react";
 
 export const FreeTrialPage: React.FC = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess("");
+    setError("");
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/free-trial", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, company }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Something went wrong. Please try again.");
+      }
+
+      setSuccess("Your free trial request has been submitted!");
+      setName("");
+      setEmail("");
+      setCompany("");
+    } catch (err: any) {
+      setError(err.message || "Failed to submit form.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#134271] to-[#5B1F39] px-6 py-12">
       <div className="max-w-2xl w-full text-center">
-        {/* Heading */}
         <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
           Unlock Your Free Trial
         </h1>
@@ -14,15 +50,19 @@ export const FreeTrialPage: React.FC = () => {
           Discover how Talkvera can transform your customer support. Start your free trial today—no credit card required.
         </p>
 
-        {/* Form Card */}
-        <form className="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl space-y-6 border border-white/20">
-          
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl space-y-6 border border-white/20"
+        >
           {/* Name */}
           <div className="relative">
             <User className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70" />
             <input
               type="text"
               placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
               className="w-full bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl px-12 py-3 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
             />
           </div>
@@ -33,6 +73,9 @@ export const FreeTrialPage: React.FC = () => {
             <input
               type="email"
               placeholder="Work Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
               className="w-full bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl px-12 py-3 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
             />
           </div>
@@ -43,17 +86,26 @@ export const FreeTrialPage: React.FC = () => {
             <input
               type="text"
               placeholder="Company Name"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+              required
               className="w-full bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl px-12 py-3 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
             />
           </div>
 
           {/* Submit */}
-          <button className="w-full bg-gradient-to-r from-green-400 to-blue-400 text-white py-3 rounded-xl text-lg font-semibold hover:from-green-500 hover:to-blue-500 shadow-lg transition transform hover:scale-105">
-            Start My Free Trial
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-gradient-to-r from-green-400 to-blue-400 text-white py-3 rounded-xl text-lg font-semibold hover:from-green-500 hover:to-blue-500 shadow-lg transition transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            {loading ? "Submitting..." : "Start My Free Trial"}
           </button>
+
+          {success && <p className="text-green-400 mt-2">{success}</p>}
+          {error && <p className="text-red-400 mt-2">{error}</p>}
         </form>
 
-        {/* Extra Info */}
         <p className="mt-6 text-sm text-white/70">
           No credit card needed. Cancel anytime. Immediate access to all features.
         </p>
