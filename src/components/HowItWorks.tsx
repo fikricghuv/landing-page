@@ -110,19 +110,15 @@ export const HowItWorks: React.FC = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-14">
           <Link
             to="/free-trial"
-            className="bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg
-                      transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+            className="w-full p-4 bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white py-3 rounded-xl text-lg font-semibold hover:from-[#5B1F39] hover:to-[#134271] shadow-lg transition-transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             Start Your Free Trial
           </Link>
-
         </div>
-
       </div>
-
     </section>
   );
 };
