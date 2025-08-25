@@ -25,7 +25,7 @@ export const GetStartedPage: React.FC = () => {
           work_email: workEmail,
           company_name: companyName,
           goal,
-          type_submit: "get-started", // biar bisa dibedain dari free-trial
+          type_submit: "get-started", 
         },
       ]);
 
