@@ -22,6 +22,7 @@ export const FreeTrialPage: React.FC = () => {
           full_name: name,
           work_email: email,
           company_name: company,
+          type_submit: "free-trial", 
         },
       ]);
 
@@ -32,7 +33,7 @@ export const FreeTrialPage: React.FC = () => {
       setEmail("");
       setCompany("");
     } catch (err: any) {
-      setError(err.message || "Failed to submit form.");
+      setError(err.message || "❌ Failed to submit form.");
     } finally {
       setLoading(false);
     }
@@ -45,7 +46,8 @@ export const FreeTrialPage: React.FC = () => {
           Unlock Your Free Trial
         </h1>
         <p className="text-lg md:text-xl text-gray-200 mb-12">
-          Discover how Talkvera can transform your customer support. Start your free trial today—no credit card required.
+          Discover how Talkvera can transform your customer support. Start your
+          free trial today—no credit card required.
         </p>
 
         <form
@@ -105,7 +107,8 @@ export const FreeTrialPage: React.FC = () => {
         </form>
 
         <p className="mt-6 text-sm text-white/70">
-          No credit card needed. Cancel anytime. Immediate access to all features.
+          No credit card needed. Cancel anytime. Immediate access to all
+          features.
         </p>
       </div>
     </section>

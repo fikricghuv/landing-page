@@ -1,12 +1,13 @@
 // src/pages/GetStartedPage.tsx
 import React, { useState } from "react";
-import { User, Mail, MessageCircle } from "lucide-react";
-import { supabase } from "../../lib/supabaseClient"; 
+import { User, Mail, MessageCircle, Building } from "lucide-react";
+import { supabase } from "../../lib/supabaseClient";
 
 export const GetStartedPage: React.FC = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [workEmail, setWorkEmail] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [goal, setGoal] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -20,19 +21,21 @@ export const GetStartedPage: React.FC = () => {
     try {
       const { error } = await supabase.from("dt_request_demo").insert([
         {
-          name,
-          email,
-          message,
-          // type: "get-started", // biar bisa bedain source
+          full_name: fullName,
+          work_email: workEmail,
+          company_name: companyName,
+          goal,
+          type_submit: "get-started", // biar bisa dibedain dari free-trial
         },
       ]);
 
       if (error) throw error;
 
       setSuccess("Your request has been submitted!");
-      setName("");
-      setEmail("");
-      setMessage("");
+      setFullName("");
+      setWorkEmail("");
+      setCompanyName("");
+      setGoal("");
     } catch (err: any) {
       setError(err.message || "Failed to submit form.");
     } finally {
@@ -54,39 +57,52 @@ export const GetStartedPage: React.FC = () => {
           onSubmit={handleSubmit}
           className="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl space-y-6 border border-white/20"
         >
-          {/* Name */}
+          {/* Full Name */}
           <div className="relative">
             <User className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70" />
             <input
               type="text"
               placeholder="Full Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
               required
               className="w-full bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl px-12 py-3 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
             />
           </div>
 
-          {/* Email */}
+          {/* Work Email */}
           <div className="relative">
             <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70" />
             <input
               type="email"
               placeholder="Work Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={workEmail}
+              onChange={(e) => setWorkEmail(e.target.value)}
               required
               className="w-full bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl px-12 py-3 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
             />
           </div>
 
-          {/* Message */}
+          {/* Company Name */}
+          <div className="relative">
+            <Building className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70" />
+            <input
+              type="text"
+              placeholder="Company Name"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
+              required
+              className="w-full bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl px-12 py-3 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+            />
+          </div>
+
+          {/* Goal */}
           <div className="relative">
             <MessageCircle className="absolute left-4 top-4 text-white/70" />
             <textarea
               placeholder="Tell us about your goals or challenges..."
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              value={goal}
+              onChange={(e) => setGoal(e.target.value)}
               required
               className="w-full bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl px-12 pt-4 pb-3 focus:outline-none focus:ring-2 focus:ring-green-400 transition resize-none"
               rows={4}
