@@ -106,7 +106,7 @@ export const Hero: React.FC = () => {
                 {/* <span className="font-normal text-white"> Talk</span>
                 <span className="font-bold text-white">VERA</span> */}
                 <img 
-                  src="../../public/assets/logo/logo-just-name.svg" 
+                  src="../../assets/logo/logo-just-name.svg" 
                   alt="Talkvera Logo" 
                   className="inline-block h-10 lg:h-10 ml-2 mb-2 align-middle"
                 />
