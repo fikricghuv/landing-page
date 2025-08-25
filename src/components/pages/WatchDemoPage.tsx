@@ -27,7 +27,7 @@ export const WatchDemoPage: React.FC = () => {
         {/* Call to action */}
         <Link
           to="/get-started"
-          className="inline-block bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold px-8 py-3 rounded-xl shadow-lg hover:from-green-500 hover:to-blue-600 transition transform hover:scale-105"
+          className="inline-block bg-gradient-to-br from-[#367DBB] to-[#4BDBBC] text-white font-semibold px-8 py-3 rounded-xl shadow-lg hover:from-[#2d6aa0] hover:to-[#3cb19a] transition transform hover:scale-105"
         >
           Get Started Now
         </Link>

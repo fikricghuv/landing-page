@@ -1,7 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Play, CheckCircle } from 'lucide-react';
-import { Helmet } from 'react-helmet';
+import React, { useEffect, useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import Lottie from "lottie-react";
+
+// 👉 Import lottie animation JSON
+import supportAnimation from '../../public/assets/ConnectWithUs.json';
+import clockAnimation from '../../public/assets/SendMessage.json';
+import costAnimation from '../../public/assets/Money.json';
+import integrationAnimation from '../../public/assets/Integration.json';
 
 export const CTA: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,9 +17,7 @@ export const CTA: React.FC = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          setIsVisible(entry.isIntersecting);
-        });
+        entries.forEach((entry) => setIsVisible(entry.isIntersecting));
       },
       { threshold: 0.2 }
     );
@@ -23,23 +28,48 @@ export const CTA: React.FC = () => {
     };
   }, []);
 
+  const benefits = [
+  { 
+    text: "24/7 Always-On Support", 
+    animation: supportAnimation, 
+    size: { w: 200, h: 200 } 
+  },
+
+  { 
+    text: "Seamless Integrations", 
+    animation: integrationAnimation, 
+    size: { w: 200, h: 200 } 
+  },
+  { 
+    text: "Reduce Support Costs", 
+    animation: costAnimation, 
+    size: { w: 200, h: 200 } 
+  },
+  { 
+    text: "Instant Replies", 
+    animation: clockAnimation, 
+    size: { w: 200, h: 200 } 
+  },
+];
+
+
   return (
     <section
       ref={sectionRef}
       id="contact"
       className={`relative py-24 scroll-mt-12 bg-gradient-to-br from-[#134271] to-[#5B1F39] transition-all duration-1000 transform ${
-        isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
+        isVisible
+          ? "opacity-100 translate-y-0 scale-100"
+          : "opacity-0 translate-y-10 scale-95"
       }`}
     >
       {/* ✅ SEO Helmet */}
       <Helmet>
         <title>Talkvera - Revolutionize Your Customer Service</title>
-        <meta name="description" content="Explore Talkvera's key features: AI-powered dashboards, real-time monitoring, prompt customization, knowledge base management, user feedback analytics, and insightful reporting." />
-        <meta name="keywords" content="Talkvera features, AI chatbot features, customer service automation tools, knowledge base management, real-time analytics, reporting" />
-        <meta property="og:title" content="Talkvera - AI Customer Service Features" />
-        <meta property="og:description" content="Discover Talkvera's essential features that help businesses automate and optimize customer support with AI technology." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://talkvera.com/features" />
+        <meta
+          name="description"
+          content="Explore Talkvera's key features: AI-powered dashboards, real-time monitoring, prompt customization, knowledge base management, user feedback analytics, and insightful reporting."
+        />
       </Helmet>
 
       {/* Floating Particles */}
@@ -54,7 +84,7 @@ export const CTA: React.FC = () => {
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
               animationDelay: `${i * 0.5}s`,
-              animationDuration: `${Math.random() * 10 + 5}s`
+              animationDuration: `${Math.random() * 10 + 5}s`,
             }}
           />
         ))}
@@ -64,80 +94,80 @@ export const CTA: React.FC = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-black/10"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className={`max-w-4xl mx-auto transition-all duration-1000 delay-100 transform ${
-          isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'
-        }`}>
-          {/* Heading with shimmer */}
+        <div
+          className={`max-w-4xl mx-auto transition-all duration-1000 delay-100 transform ${
+            isVisible
+              ? "opacity-100 translate-y-0 scale-100"
+              : "opacity-0 translate-y-5 scale-95"
+          }`}
+        >
+          {/* Heading */}
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight relative">
             Ready to Transform Your
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-white to-green-300 animate-gradient-move">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#367DBB] to-[#4BDBBC] animate-gradient-move">
               Customer Service?
             </span>
           </h2>
-          
+
           <p className="text-xl text-white mb-12 leading-relaxed max-w-2xl mx-auto">
-            Be among the first businesses to revolutionize customer experience with AI-powered automation.
+            Be among the first businesses to revolutionize customer experience
+            with AI-powered automation.
           </p>
 
-          {/* Benefits with stagger animation */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {[
-              '24/7 Instant Replies',
-              'Human-like Conversations',
-              'Reduce Support Costs'
-            ].map((benefit, i) => (
+          {/* Benefits */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-20 mb-12">
+            {benefits.map((benefit, i) => (
               <div
-                key={benefit}
-                className={`flex items-center justify-center space-x-2 text-white transition-all duration-700 transform ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-                }`}
-                style={{ transitionDelay: `${i * 200 + 300}ms` }}
+                key={benefit.text}
+                className="flex flex-col items-center text-white p-6 "
+                
               >
-                <CheckCircle className="h-5 w-5 text-green-400 animate-pulse" />
-                <span>{benefit}</span>
+                <Lottie
+                  animationData={benefit.animation}
+                  loop
+                  autoplay
+                  className={`mb-4 drop-shadow-lg`}
+                  style={{
+                    width: `${benefit.size.w}px`,
+                    height: `${benefit.size.h}px`,
+                  }}
+                />
+
+                <span className="text-lg font-semibold text-center">{benefit.text}</span>
               </div>
             ))}
           </div>
 
-          {/* CTA Buttons with pulse */}
-          <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 delay-300 transform ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-          }`}>
-            {/* <button className="group bg-green-500 text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center">
-              Try Talkvera Free
-              <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </button> */}
-
+          {/* CTA Buttons */}
+          <div
+            className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 delay-300 transform ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-5"
+            }`}
+          >
             <Link
               to="/get-started"
-              className="relative group px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 
-                        transform hover:scale-105 hover:shadow-xl flex items-center justify-center text-white"
+              className="group relative px-10 py-5 rounded-2xl text-xl font-semibold flex items-center justify-center
+                        text-white transition-all duration-300 border border-transparent
+                        bg-gradient-to-br from-[#367DBB] to-[#4BDBBC] 
+                        hover:from-[#2d6aa0] hover:to-[#3cb19a] shadow-xl"
             >
-              <span
-                className="absolute inset-0 rounded-xl p-[2px] 
-                          bg-gradient-to-r from-[#45C54B] to-[#BCDD43]"
-                style={{
-                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                  WebkitMaskComposite: 'xor',
-                  maskComposite: 'exclude'
-                }}
-              />
               <span className="relative z-10 flex items-center">
                 Try Talkvera Free
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
               </span>
             </Link>
-            
-            {/* <button className="group bg-white/10 backdrop-blur-sm text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 flex items-center">
-              <Play className="mr-3 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-              Book a Demo
-            </button> */}
           </div>
 
-          {/* Footer Info */}
-          <div className={`mt-12 text-white text-sm transition-all duration-1000 delay-400 transform ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-          }`}>
+          {/* Footer */}
+          <div
+            className={`mt-12 text-white text-sm transition-all duration-1000 delay-400 transform ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-5"
+            }`}
+          >
             <p>Built with enterprise-grade security & 99.9% uptime SLA</p>
           </div>
         </div>

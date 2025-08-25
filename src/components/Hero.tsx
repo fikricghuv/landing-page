@@ -92,19 +92,24 @@ export const Hero: React.FC = () => {
         <meta property="og:url" content="https://talkvera.com" />
       </Helmet>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 pt-32">
         <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
           {/* LEFT CONTENT */}
           <div className="lg:col-span-6">
             <div className="max-w-2xl">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
                 Revolutionize Your
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-white to-green-300 animate-gradient-move">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#367DBB] to-[#4BDBBC] animate-gradient-move">
                   Customer Service
                 </span>
                 with
-                <span className="font-normal text-white"> Talk</span>
-                <span className="font-bold text-white">VERA</span>
+                {/* <span className="font-normal text-white"> Talk</span>
+                <span className="font-bold text-white">VERA</span> */}
+                <img 
+                  src="../../public/assets/logo/logo-just-name.svg" 
+                  alt="Talkvera Logo" 
+                  className="inline-block h-10 lg:h-10 ml-2 mb-2 align-middle"
+                />
               </h1>
               <p className="mt-6 text-xl text-blue-100 leading-relaxed">
                 AI-powered chatbot platform to handle customer queries efficiently,
@@ -121,27 +126,21 @@ export const Hero: React.FC = () => {
               <div className="mt-1 flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/get-started"
-                  className="relative group px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 
-                            transform hover:scale-105 hover:shadow-xl flex items-center justify-center text-white"
+                  className="group relative px-8 py-4 rounded-xl text-lg font-semibold flex items-center justify-center
+                            text-white transition-all duration-300 border border-transparent
+                            bg-gradient-to-br from-[#367DBB] to-[#4BDBBC] 
+                            hover:from-[#2d6aa0] hover:to-[#3cb19a]"
                 >
-                  <span
-                    className="absolute inset-0 rounded-xl p-[2px] 
-                              bg-gradient-to-r from-green-500 to-yellow-400"
-                    style={{
-                      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                      WebkitMaskComposite: 'xor',
-                      maskComposite: 'exclude'
-                    }}
-                  />
                   <span className="relative z-10 flex items-center">
                     Get Started
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
                   </span>
                 </Link>
 
                 <Link
                   to="/watch-demo"
-                  className="group bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 flex items-center justify-center">
+                  className="group bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl text-lg font-semibold 
+                            hover:bg-white/20 transition-all duration-300 border border-white/20 flex items-center justify-center">
                   <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
                   Watch Demo
                 </Link>
@@ -150,10 +149,10 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* RIGHT CHAT DEMO */}
-          <div className="mt-16 lg:mt-0 lg:col-span-6 relative" style={{ top: '-1rem'}}>
-            <div className="relative bg-white rounded-lg shadow-2xl overflow-visible max-w-sm mx-auto">
+          <div className="mt-16 lg:mt-0 lg:col-span-6 relative lg:ml-[12rem]" style={{ top: '-1rem'}}>
+            <div className="relative bg-white rounded-xl shadow-2xl overflow-visible max-w-sm mx-auto">
               {/* Header */}
-              <div className="p-4 flex items-center bg-gradient-to-br from-[#134271] to-[#5B1F39] rounded-t-lg">
+              <div className="p-4 flex items-center bg-gradient-to-br from-[#367DBB] to-[#4BDBBC] rounded-t-xl">
                 <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-3">
                   <Bot className="w-6 h-6 text-white" />
                 </div>
@@ -178,12 +177,13 @@ export const Hero: React.FC = () => {
                       </div>
                     )}
                     <div
-                      className={`px-3 py-2 rounded-lg max-w-xs whitespace-pre-line shadow-sm text-sm leading-snug ${
+                      className={`px-3 py-2 rounded-xl max-w-xs whitespace-pre-line shadow-sm text-sm leading-snug ${
                         msg.sender === 'customer' ? 'text-white' : 'text-gray-800'
                       }`}
                       style={{
                         backgroundColor: msg.sender === 'customer' ? '#3b82f6' : '#f1f5f9',
                         fontSize: '0.8rem',
+                        maxWidth: '65%',
                       }}
                     >
                       <p>{msg.text}</p>
@@ -205,7 +205,7 @@ export const Hero: React.FC = () => {
               </div>
 
               {/* Chat Input */}
-              <div className="bg-white border-t p-3 flex items-center space-x-3 rounded-b-lg">
+              <div className="bg-white border-t p-3 flex items-center space-x-3 rounded-b-xl">
                 <div className="flex-1 bg-gray-100 rounded-full px-4 py-2">
                   <div className="text-gray-500 text-sm">Type a message...</div>
                 </div>
@@ -217,11 +217,11 @@ export const Hero: React.FC = () => {
               </div>
             </div>
 
-            <div className="absolute -top-4 -right-4 bg-[#e3f2fd] rounded-lg shadow-lg p-3 animate-bounce">
-              <div className="text-sm font-semibold text-green-600">90%+ Resolution Rate</div>
+            <div className="absolute -top-4 -right-4 bg-[#e3f2fd] rounded-xl shadow-lg p-3 animate-bounce">
+              <div className="text-sm font-semibold text-[#367DBB]">90%+ Resolution Rate</div>
             </div>
-            <div className="absolute -bottom-10 -left-4 bg-[#e3f2fd] rounded-lg shadow-lg p-3 animate-bounce">
-              <div className="text-sm font-semibold text-blue-600">30s Response Time</div>
+            <div className="absolute -bottom-10 -left-4 bg-[#e3f2fd] rounded-xl shadow-lg p-3 animate-bounce">
+              <div className="text-sm font-semibold text-[#3cb19a]">30s Response Time</div>
             </div>
           </div>
         </div>

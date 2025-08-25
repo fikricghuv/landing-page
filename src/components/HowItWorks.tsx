@@ -86,13 +86,15 @@ export const HowItWorks: React.FC = () => {
         {/* Steps */}
         <div className="relative flex-1 flex flex-col justify-center">
           {/* Connection Lines */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#134271] to-[#5B1F39] transform -translate-y-1/2"></div>
+          {/* <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#134271] to-[#5B1F39] transform -translate-y-1/2"></div> */}
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative">
             {steps.map((step, index) => (
               <div key={step.title} ref={(el) => (stepRefs.current[index] = el)} data-index={index} className={`relative group transition-all duration-700 transform ${visibleSteps.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 150}ms` }}>
                 <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-gray-200 hover:border-blue-200 border border-gray-200">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white rounded-full text-xl font-bold mb-6 shadow-lg">{index + 1}</div>
+                  <div className="inline-flex items-center justify-center w-24 h-16 bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white rounded-2xl text-xl font-bold mb-6 shadow-lg">
+                    STEP {index + 1}
+                  </div>
                   <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:bg-blue-100">
                     <step.icon className="h-10 w-10 text-[#134271] transition-transform duration-300 group-hover:scale-110" />
                   </div>
@@ -110,10 +112,12 @@ export const HowItWorks: React.FC = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-14">
+        <div className="text-center mt-10 mb-4">
           <Link
             to="/free-trial"
-            className="w-full p-4 bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white py-3 rounded-xl text-lg font-semibold hover:from-[#5B1F39] hover:to-[#134271] shadow-lg transition-transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full max-w-md px-8 py-5 bg-gradient-to-br from-[#367DBB] to-[#4BDBBC] text-white py-3 rounded-2xl 
+            text-lg font-semibold hover:from-[#2d6aa0] hover:to-[#3cb19a] shadow-lg transition-transform 
+            hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             Start Your Free Trial
           </Link>

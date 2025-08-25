@@ -44,12 +44,15 @@ export const ComparisonSection: React.FC = () => {
   };
 
   return (
-    <section id="why-choose-talkvera" className="relative lg:h-screen min-h-[800px] py-24 bg-white relative overflow-hidden">
+    <section
+      id="why-choose-talkvera"
+      className="relative min-h-screen py-16 flex items-center justify-center bg-white overflow-hidden"
+    >
       {/* Decorative background */}
       <div className="absolute -top-20 -left-20 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-200/20 rounded-full blur-3xl"></div>
 
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
+      <div className="max-w-6xl w-full mx-auto px-4 relative z-10 flex flex-col items-center">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900">Why Choose Talkvera?</h2>
           <p className="text-lg text-gray-600">
@@ -60,7 +63,7 @@ export const ComparisonSection: React.FC = () => {
         {/* Wrapper dengan border section */}
         <div
           ref={sectionRef}
-          className={`overflow-x-auto border border-gray-200 rounded-2xl shadow-lg bg-white transition-all duration-700 ease-out ${
+          className={`w-full overflow-x-auto border border-gray-200 rounded-2xl shadow-lg bg-white transition-all duration-700 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
@@ -71,13 +74,17 @@ export const ComparisonSection: React.FC = () => {
                 <th className="py-4 px-6 text-center bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white font-bold">
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
                     <span className="text-xl">Talkvera</span>
-                    <span className="bg-green-500 text-white text-xs sm:text-xs  px-2 py-1 rounded-full whitespace-nowrap">
+                    <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">
                       Best Value
                     </span>
                   </div>
                 </th>
-                <th className="py-4 px-6 text-center font-semibold text-gray-700 bg-gray-100 border-r border-gray-200">Other Chatbots</th>
-                <th className="py-4 px-6 text-center font-semibold text-gray-700 bg-gray-100">Manual (Admin)</th>
+                <th className="py-4 px-6 text-center font-semibold text-gray-700 bg-gray-100 border-r border-gray-200">
+                  Other Chatbots
+                </th>
+                <th className="py-4 px-6 text-center font-semibold text-gray-700 bg-gray-100">
+                  Manual (Admin)
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -87,9 +94,15 @@ export const ComparisonSection: React.FC = () => {
                     <feat.icon className="w-5 h-5 text-blue-600" />
                     {feat.title}
                   </td>
-                  <td className="py-4 px-6 text-center bg-blue-50">{renderIcon(comparisonData.talkvera[i])}</td>
-                  <td className="py-4 px-6 text-center border-r border-gray-200">{renderIcon(comparisonData.others[i])}</td>
-                  <td className="py-4 px-6 text-center ">{renderIcon(comparisonData.manual[i] || "✘")}</td>
+                  <td className="py-4 px-6 text-center bg-blue-50">
+                    {renderIcon(comparisonData.talkvera[i])}
+                  </td>
+                  <td className="py-4 px-6 text-center border-r border-gray-200">
+                    {renderIcon(comparisonData.others[i])}
+                  </td>
+                  <td className="py-4 px-6 text-center">
+                    {renderIcon(comparisonData.manual[i] || "✘")}
+                  </td>
                 </tr>
               ))}
             </tbody>

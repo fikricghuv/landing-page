@@ -52,8 +52,8 @@ export const Navigation: React.FC = () => {
                 <button
                   key={item}
                   onClick={() => handleScrollTo(item.toLowerCase().replace(/\s+/g, '-'))}
-                  className={`px-3 py-2 text-base font-medium transition-transform duration-300 hover:scale-110
-                    ${isScrolled ? 'text-gray-900' : 'text-white'}
+                  className={`px-3 py-2 text-base font-medium transition-colors duration-300
+                    ${isScrolled ? 'text-gray-900 hover:underline' : 'text-white hover:underline'}
                   `}
                 >
                   {item}
@@ -66,7 +66,7 @@ export const Navigation: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <Link
               to="/get-started"
-              className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105
+              className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform
                 ${isScrolled
                   ? 'border border-black text-black hover:bg-black hover:text-white'
                   : 'border border-white text-white hover:bg-white hover:text-black'

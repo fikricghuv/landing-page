@@ -77,10 +77,11 @@ export const ChatWidget: React.FC = () => {
                         animationData={animationData}
                         loop
                         autoplay
-                        className="w-[40px] h-[40px] filter invert"
+                        className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] filter invert"
                     />
+
                     <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 
-                                    transition-all duration-700 whitespace-nowrap font-medium">
+                                    transition-all duration-500 whitespace-nowrap font-medium group-hover:pr-2">
                         Talk with Vera
                     </span>
                 </button>

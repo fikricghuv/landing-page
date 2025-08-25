@@ -215,34 +215,30 @@ export const ROISimulation: React.FC = () => {
                         {/* Right: Results */}
                         <div className={`transition-all duration-1000 delay-200 ${
                             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-                        }`}>
+                            }`}>
                             <h3 className="text-2xl font-semibold text-gray-800 mb-6">Projected Savings</h3>
                             <div className="space-y-6">
-                                <div className="bg-green-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                                    <div className="text-2xl font-bold text-green-600 mb-2">
+
+                                <div className="bg-blue-100 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                                    <div className="text-2xl font-bold text-blue-600 mb-2">
                                         {new Intl.NumberFormat("id-ID", {
-                                            style: "currency",
-                                            currency: "IDR",
-                                            maximumFractionDigits: 0, 
+                                        style: "currency",
+                                        currency: "IDR",
+                                        maximumFractionDigits: 0, 
                                         }).format(animatedValues.savings)}
                                     </div>
                                     <div className="text-sm text-gray-600">Annual Cost Savings</div>
                                 </div>
 
-                                {/* <div className="bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                                    <div className="text-2xl font-bold text-blue-600 mb-2">
-                                        {animatedValues.reduction}%
-                                    </div>
-                                    <div className="text-sm text-gray-600">Ticket Volume Reduction</div>
-                                </div> */}
-                                <div className="bg-yellow-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                                    <div className="text-2xl font-bold text-yellow-600 mb-2">
+                                <div className="bg-blue-200 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                                    <div className="text-2xl font-bold text-blue-700 mb-2">
                                         {animatedValues.newTime.toFixed(1)} mins
                                     </div>
                                     <div className="text-sm text-gray-600">New Avg Resolution Time</div>
                                 </div>
-                                <div className="bg-purple-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                                    <div className="text-2xl font-bold text-purple-600 mb-2">
+
+                                <div className="bg-blue-300 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                                    <div className="text-2xl font-bold text-blue-800 mb-2">
                                         {animatedValues.payback.toFixed(1)} months
                                     </div>
                                     <div className="text-sm text-gray-600">Payback Period</div>

@@ -113,7 +113,9 @@ export const GetStartedPage: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-green-400 to-blue-400 text-white py-3 rounded-xl text-lg font-semibold hover:from-green-500 hover:to-blue-500 shadow-lg transition transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full bg-gradient-to-br from-[#367DBB] to-[#4BDBBC] text-white py-3 rounded-xl text-lg font-semibold 
+                      hover:from-[#2d6aa0] hover:to-[#3cb19a] shadow-lg transition transform disabled:opacity-60 
+                      disabled:cursor-not-allowed"
           >
             {loading ? "Submitting..." : "Get Started Now"}
           </button>

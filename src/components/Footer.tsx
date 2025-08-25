@@ -24,10 +24,15 @@ export const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="lg:col-span-4">
             <div className="mb-2">
-              <h3 className="text-3xl mb-4">
-                <span className="font-normal text-white">Talk</span>
-                <span className="font-bold text-white">VERA</span>
-              </h3>
+              <h5 className="text-3xl mb-4">
+                {/* <span className="font-normal text-white">Talk</span>
+                <span className="font-bold text-white">VERA</span> */}
+                <img 
+                  src="../../public/assets/logo/logo-just-name.svg" 
+                  alt="Talkvera Logo" 
+                  className="inline-block h-6 lg:h-10 align-middle"
+                />
+              </h5>
               <p className="text-gray-400 leading-relaxed">
                 Empower your business with AI-driven customer support. Faster responses, happier customers, and lower operational costs.
               </p>
@@ -126,14 +131,18 @@ export const Footer: React.FC = () => {
           <div className="text-gray-400 text-sm mb-1 lg:mb-0">
             © 2025 Talkvera. All rights reserved.
           </div>
-          {/* <div className="flex items-center space-x-6 text-sm text-gray-400">
-            <span>Made with ❤️ for customer success</span>
-            <div className="flex items-center space-x-1">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span>All systems operational</span>
-            </div>
-          </div> */}
+          
+          {/* Links */}
+          <div className="flex items-center space-x-6 text-sm text-gray-400">
+            <button className="underline hover:text-gray-200 transition-colors duration-200 px-2 py-1">
+              Terms of Service
+            </button>
+            <button className="underline hover:text-gray-200 transition-colors duration-200 px-2 py-1">
+              Privacy Policy
+            </button>
+          </div>
         </div>
+
       </div>
     </footer>
   );
