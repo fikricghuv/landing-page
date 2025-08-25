@@ -1,6 +1,6 @@
-// src/pages/FreeTrialPage.tsx
 import React, { useState } from "react";
 import { User, Mail, Briefcase } from "lucide-react";
+import { supabase } from "../../lib/supabaseClient";
 
 export const FreeTrialPage: React.FC = () => {
   const [name, setName] = useState("");
@@ -17,17 +17,15 @@ export const FreeTrialPage: React.FC = () => {
     setError("");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/free-trial", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const { error } = await supabase.from("dt_request_demo").insert([
+        {
+          full_name: name,
+          work_email: email,
+          company_name: company,
         },
-        body: JSON.stringify({ name, email, company }),
-      });
+      ]);
 
-      if (!response.ok) {
-        throw new Error("Something went wrong. Please try again.");
-      }
+      if (error) throw error;
 
       setSuccess("Your free trial request has been submitted!");
       setName("");

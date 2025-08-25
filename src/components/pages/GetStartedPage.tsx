@@ -1,6 +1,7 @@
 // src/pages/GetStartedPage.tsx
 import React, { useState } from "react";
 import { User, Mail, MessageCircle } from "lucide-react";
+import { supabase } from "../../lib/supabaseClient"; 
 
 export const GetStartedPage: React.FC = () => {
   const [name, setName] = useState("");
@@ -17,17 +18,16 @@ export const GetStartedPage: React.FC = () => {
     setError("");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/get-started", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const { error } = await supabase.from("dt_request_demo").insert([
+        {
+          name,
+          email,
+          message,
+          // type: "get-started", // biar bisa bedain source
         },
-        body: JSON.stringify({ name, email, message }),
-      });
+      ]);
 
-      if (!response.ok) {
-        throw new Error("Something went wrong. Please try again.");
-      }
+      if (error) throw error;
 
       setSuccess("Your request has been submitted!");
       setName("");
