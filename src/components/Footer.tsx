@@ -1,7 +1,7 @@
 import React from 'react';
 import { Linkedin, Twitter, Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 // import { Mail, Phone, MapPin } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
 const footerLinks = {
   'Product': ['API Documentation'],
   'Company': ['About Us', 'Blog'],
@@ -132,14 +132,20 @@ export const Footer: React.FC = () => {
             © 2025 Talkvera. All rights reserved.
           </div>
           
-          {/* Links */}
+          {/* Legal Links */}
           <div className="flex items-center space-x-6 text-sm text-gray-400">
-            <button className="underline hover:text-gray-200 transition-colors duration-200 px-2 py-1">
+            <Link 
+              to="/terms-of-service" 
+              className="underline hover:text-gray-200 transition-colors duration-200 px-2 py-1"
+            >
               Terms of Service
-            </button>
-            <button className="underline hover:text-gray-200 transition-colors duration-200 px-2 py-1">
+            </Link>
+            <Link 
+              to="/privacy-policy" 
+              className="underline hover:text-gray-200 transition-colors duration-200 px-2 py-1"
+            >
               Privacy Policy
-            </button>
+            </Link>
           </div>
         </div>
 

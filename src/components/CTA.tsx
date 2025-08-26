@@ -41,14 +41,14 @@ export const CTA: React.FC = () => {
     size: { w: 180, h: 200 } 
   },
   { 
-    text: "Reduce Support Costs", 
-    animation: costAnimation, 
-    size: { w: 190, h: 200 } 
-  },
-  { 
     text: "Instant Replies", 
     animation: replyAnimation, 
     size: { w: 220, h: 200 } 
+  },
+  { 
+    text: "Reduce Support Costs", 
+    animation: costAnimation, 
+    size: { w: 190, h: 200 } 
   },
 ];
 

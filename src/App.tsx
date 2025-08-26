@@ -13,6 +13,9 @@ import { GetStartedPage } from './components/pages/GetStartedPage';
 import { WatchDemoPage } from './components/pages/WatchDemoPage';
 import { FreeTrialPage } from './components/pages/FreeTrialPage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { PrivacyPolicy } from './components/pages/PrivacyPolicy';
+import { TermsOfService } from './components/pages/TermsOfService';
+import { ScrollToTop } from './components/ScrollToTop';
 
 function HomePage() {
   return (
@@ -32,6 +35,7 @@ function HomePage() {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-gray-50">
         <Routes>
           {/* Home page dengan navigation */}
@@ -48,6 +52,8 @@ function App() {
           <Route path="/get-started" element={<GetStartedPage />} />
           <Route path="/watch-demo" element={<WatchDemoPage />} />
           <Route path="/free-trial" element={<FreeTrialPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
         </Routes>
       </div>
     </Router>

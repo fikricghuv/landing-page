@@ -25,6 +25,7 @@ export const HowItWorks: React.FC = () => {
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
+  const [hoverStep, setHoverStep] = useState<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,7 +35,7 @@ export const HowItWorks: React.FC = () => {
 
           if (entry.isIntersecting) {
             setVisibleSteps((prev) => [...new Set([...prev, index])]);
-            setCurrentStep(index); // update step aktif
+            setCurrentStep(index);
           }
         });
       },
@@ -52,10 +53,11 @@ export const HowItWorks: React.FC = () => {
     };
   }, []);
 
-  const progressPercent = ((currentStep + 1) / steps.length) * 100;
+  // progress normal mengikuti currentStep
+  const progressPercent = (currentStep / (steps.length - 1)) * 100;
 
   return (
-    <section id="how-it-works" className="relative lg:h-screen min-h-[800px] py-24 bg-white relative overflow-hidden">
+    <section id="how-it-works" className="relative lg:h-screen min-h-[800px] py-24 bg-white overflow-hidden">
       <Helmet>
         <title>How Talkvera Works - Launch Your AI Chatbot in 3 Steps</title>
         <meta
@@ -74,23 +76,48 @@ export const HowItWorks: React.FC = () => {
         </div>
 
         {/* Progress Bar */}
-        <div className="relative w-full max-w-2xl mx-auto mb-16">
-          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+        {/* <div className="relative w-full max-w-4xl mx-auto mb-16"> */}
+        <div className="relative w-[71%] max-w-6xl mx-auto mb-16">
+          {/* Track */}
+          <div className="h-2 bg-gray-200 rounded-full relative overflow-hidden">
             <div
-              className="h-2 bg-gradient-to-r from-[#134271] to-[#5B1F39] transition-all duration-500 animate-gradient-move"
-              style={{ width: `${progressPercent}%` }}
+              className={`h-2 bg-gradient-to-r from-[#134271] to-[#5B1F39] rounded-full transition-all duration-500`}
+              style={{
+                width:
+                  hoverStep !== null
+                    ? `${(hoverStep / (steps.length - 1)) * 100}%`
+                    : `${progressPercent}%`,
+                height: hoverStep !== null ? "8px" : "6px",
+              }}
             ></div>
           </div>
-          <div className="flex justify-between mt-2 text-sm font-medium text-gray-600">
+
+          {/* Step Dots */}
+          <div className="absolute top-1/2 left-0 w-full flex justify-between transform -translate-y-1/2">
             {steps.map((_, i) => (
-              <span
+              <div
                 key={i}
-                className={`${
-                  i <= currentStep ? "text-[#134271] font-semibold" : "text-gray-400"
+                className={`relative w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors duration-300 ${
+                  i <= currentStep
+                    ? "bg-[#134271] border-[#134271] text-white"
+                    : "bg-white border-gray-300 text-gray-400"
                 }`}
               >
-                Step {i + 1}
-              </span>
+                <span className="text-xs font-bold">{i + 1}</span>
+
+                {/* Label tepat di bawah lingkaran */}
+                <span
+                  className={`absolute top-full mt-3 -translate-x-1/2 left-1/2 text-sm whitespace-nowrap transition-colors duration-300 ${
+                    hoverStep === i
+                      ? "text-[#5B1F39] font-bold"
+                      : i <= currentStep
+                      ? "text-[#134271] font-semibold"
+                      : "text-gray-400"
+                  }`}
+                >
+                  Step {i + 1}
+                </span>
+              </div>
             ))}
           </div>
         </div>
@@ -108,11 +135,10 @@ export const HowItWorks: React.FC = () => {
                   : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
+              onMouseEnter={() => setHoverStep(index)}
+              onMouseLeave={() => setHoverStep(null)}
             >
-              <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-gray-200 hover:border-blue-200 border border-gray-200">
-                {/* <div className="inline-flex items-center justify-center w-24 h-16 bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white rounded-2xl text-xl font-bold mb-6 shadow-lg">
-                  STEP {index + 1}
-                </div> */}
+              <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 hover:border-blue-200">
                 <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:bg-blue-100">
                   <step.icon className="h-10 w-10 text-[#134271] transition-transform duration-300 group-hover:scale-110" />
                 </div>
