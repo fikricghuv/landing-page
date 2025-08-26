@@ -6,7 +6,7 @@ import Lottie from "lottie-react";
 
 // 👉 Import lottie animation JSON
 import supportAnimation from '../../public/assets/ConnectWithUs.json';
-import clockAnimation from '../../public/assets/SendMessage.json';
+import replyAnimation from '../../public/assets/ManAndRobot.json';
 import costAnimation from '../../public/assets/Money.json';
 import integrationAnimation from '../../public/assets/Integration.json';
 
@@ -38,17 +38,17 @@ export const CTA: React.FC = () => {
   { 
     text: "Seamless Integrations", 
     animation: integrationAnimation, 
-    size: { w: 200, h: 200 } 
+    size: { w: 180, h: 200 } 
   },
   { 
     text: "Reduce Support Costs", 
     animation: costAnimation, 
-    size: { w: 200, h: 200 } 
+    size: { w: 190, h: 200 } 
   },
   { 
     text: "Instant Replies", 
-    animation: clockAnimation, 
-    size: { w: 200, h: 200 } 
+    animation: replyAnimation, 
+    size: { w: 220, h: 200 } 
   },
 ];
 
@@ -95,7 +95,7 @@ export const CTA: React.FC = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div
-          className={`max-w-4xl mx-auto transition-all duration-1000 delay-100 transform ${
+          className={`max-w-6xl mx-auto transition-all duration-1000 delay-100 transform ${
             isVisible
               ? "opacity-100 translate-y-0 scale-100"
               : "opacity-0 translate-y-5 scale-95"

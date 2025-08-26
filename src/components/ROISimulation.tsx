@@ -230,15 +230,15 @@ export const ROISimulation: React.FC = () => {
                                     <div className="text-sm text-gray-600">Annual Cost Savings</div>
                                 </div>
 
-                                <div className="bg-blue-200 p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                                    <div className="text-2xl font-bold text-blue-700 mb-2">
+                                <div className="bg-blue-100 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                                    <div className="text-2xl font-bold text-blue-600 mb-2">
                                         {animatedValues.newTime.toFixed(1)} mins
                                     </div>
                                     <div className="text-sm text-gray-600">New Avg Resolution Time</div>
                                 </div>
 
-                                <div className="bg-blue-300 p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                                    <div className="text-2xl font-bold text-blue-800 mb-2">
+                                <div className="bg-blue-100 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                                    <div className="text-2xl font-bold text-blue-600 mb-2">
                                         {animatedValues.payback.toFixed(1)} months
                                     </div>
                                     <div className="text-sm text-gray-600">Payback Period</div>

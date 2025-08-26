@@ -68,7 +68,8 @@ export const ChatWidget: React.FC = () => {
             {!isOpen && (
                 <button
                     onClick={() => setIsOpen(true)}
-                    className="fixed bottom-5 right-5 z-[10000] bg-blue-500 hover:bg-blue-600 text-white 
+                    className="fixed bottom-6 right-6 z-[10000] bg-gradient-to-br from-[#367DBB] to-[#4BDBBC] 
+                                hover:from-[#2d6aa0] hover:to-[#3cb19a] text-white 
                                 p-1 rounded-full shadow-xl transition-all duration-700 flex items-center 
                                 group"
                     aria-label="Open chat"
@@ -77,7 +78,7 @@ export const ChatWidget: React.FC = () => {
                         animationData={animationData}
                         loop
                         autoplay
-                        className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] filter invert"
+                        className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] filter invert"
                     />
 
                     <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 

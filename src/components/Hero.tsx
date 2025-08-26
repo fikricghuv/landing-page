@@ -103,8 +103,6 @@ export const Hero: React.FC = () => {
                   Customer Service
                 </span>
                 with
-                {/* <span className="font-normal text-white"> Talk</span>
-                <span className="font-bold text-white">VERA</span> */}
                 <img 
                   src="../../assets/logo/logo-just-name.svg" 
                   alt="Talkvera Logo" 

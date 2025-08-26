@@ -24,6 +24,7 @@ const steps = [
 export const HowItWorks: React.FC = () => {
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
+  const [currentStep, setCurrentStep] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,13 +34,11 @@ export const HowItWorks: React.FC = () => {
 
           if (entry.isIntersecting) {
             setVisibleSteps((prev) => [...new Set([...prev, index])]);
-          } else {
-            // Hilangkan jika keluar viewport
-            setVisibleSteps((prev) => prev.filter((i) => i !== index));
+            setCurrentStep(index); // update step aktif
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.5 }
     );
 
     stepRefs.current.forEach((el) => {
@@ -53,66 +52,86 @@ export const HowItWorks: React.FC = () => {
     };
   }, []);
 
+  const progressPercent = ((currentStep + 1) / steps.length) * 100;
+
   return (
     <section id="how-it-works" className="relative lg:h-screen min-h-[800px] py-24 bg-white relative overflow-hidden">
-      {/* ✅ SEO Helmet */}
       <Helmet>
         <title>How Talkvera Works - Launch Your AI Chatbot in 3 Steps</title>
         <meta
           name="description"
           content="See how easy it is to launch Talkvera: connect your data, customize your AI chatbot, and start improving customer experience—all in minutes."
         />
-        <meta
-          name="keywords"
-          content="how Talkvera works, AI chatbot setup, customer service automation, connect knowledge base, chatbot customization, chatbot analytics"
-        />
-        <meta property="og:title" content="Talkvera - AI Customer Service Features" />
-        <meta property="og:description" content="Discover Talkvera's essential features that help businesses automate and optimize customer support with AI technology." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://talkvera.com/howitworks" />
       </Helmet>
-      {/* Decorative Background */}
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full flex flex-col justify-center">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            How It Works
-          </h2>
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             From setup to results—in just three steps.
           </p>
         </div>
 
-        {/* Steps */}
-        <div className="relative flex-1 flex flex-col justify-center">
-          {/* Connection Lines */}
-          {/* <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#134271] to-[#5B1F39] transform -translate-y-1/2"></div> */}
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative">
-            {steps.map((step, index) => (
-              <div key={step.title} ref={(el) => (stepRefs.current[index] = el)} data-index={index} className={`relative group transition-all duration-700 transform ${visibleSteps.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 150}ms` }}>
-                <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-gray-200 hover:border-blue-200 border border-gray-200">
-                  <div className="inline-flex items-center justify-center w-24 h-16 bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white rounded-2xl text-xl font-bold mb-6 shadow-lg">
-                    STEP {index + 1}
-                  </div>
-                  <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:bg-blue-100">
-                    <step.icon className="h-10 w-10 text-[#134271] transition-transform duration-300 group-hover:scale-110" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-[#5B1F39] transition-colors duration-300">{step.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
-                </div>
-                {index < steps.length - 1 && (
-                  <div className="lg:hidden flex justify-center mt-8">
-                    <ArrowRight className="h-6 w-6 text-gray-400 rotate-90" />
-                  </div>
-                )}
-              </div>
+        {/* Progress Bar */}
+        <div className="relative w-full max-w-2xl mx-auto mb-16">
+          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div
+              className="h-2 bg-gradient-to-r from-[#134271] to-[#5B1F39] transition-all duration-500 animate-gradient-move"
+              style={{ width: `${progressPercent}%` }}
+            ></div>
+          </div>
+          <div className="flex justify-between mt-2 text-sm font-medium text-gray-600">
+            {steps.map((_, i) => (
+              <span
+                key={i}
+                className={`${
+                  i <= currentStep ? "text-[#134271] font-semibold" : "text-gray-400"
+                }`}
+              >
+                Step {i + 1}
+              </span>
             ))}
           </div>
         </div>
 
+        {/* Steps */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative">
+          {steps.map((step, index) => (
+            <div
+              key={step.title}
+              ref={(el) => (stepRefs.current[index] = el)}
+              data-index={index}
+              className={`relative group transition-all duration-700 transform ${
+                visibleSteps.includes(index)
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
+              <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-gray-200 hover:border-blue-200 border border-gray-200">
+                {/* <div className="inline-flex items-center justify-center w-24 h-16 bg-gradient-to-r from-[#134271] to-[#5B1F39] text-white rounded-2xl text-xl font-bold mb-6 shadow-lg">
+                  STEP {index + 1}
+                </div> */}
+                <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:bg-blue-100">
+                  <step.icon className="h-10 w-10 text-[#134271] transition-transform duration-300 group-hover:scale-110" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-[#5B1F39] transition-colors duration-300">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">{step.description}</p>
+              </div>
+              {index < steps.length - 1 && (
+                <div className="lg:hidden flex justify-center mt-8">
+                  <ArrowRight className="h-6 w-6 text-gray-400 rotate-90" />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
         {/* CTA */}
-        <div className="text-center mt-10 mb-4">
+        <div className="text-center mt-16 mb-4">
           <Link
             to="/free-trial"
             className="w-full max-w-md px-8 py-5 bg-gradient-to-br from-[#367DBB] to-[#4BDBBC] text-white py-3 rounded-2xl 
