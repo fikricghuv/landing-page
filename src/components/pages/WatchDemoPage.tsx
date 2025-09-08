@@ -17,7 +17,7 @@ export const WatchDemoPage: React.FC = () => {
         <div className="relative w-full h-0 pb-[56.25%] mb-10">
           <iframe
             className="absolute top-0 left-0 w-full h-full rounded-xl shadow-2xl border-0"
-            src="https://www.youtube.com/watch?v=RRv5nb59g2w"
+            src="https://youtu.be/RRv5nb59g2w"
             title="Talkvera Demo"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
