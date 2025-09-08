@@ -11,9 +11,7 @@ const footerLinks = {
 
 const socialLinks = [
   { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Instagram, href: '#', label: 'Instagram' }
+  { icon: Instagram, href: 'https://www.instagram.com/talk.vera/', label: 'Instagram' }
 ];
 
 export const Footer: React.FC = () => {
@@ -65,11 +63,11 @@ export const Footer: React.FC = () => {
             <div className="space-y-3 mb-8">
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-blue-400" />
-                <span>support@talkvera.com</span>
+                <span>talkvera.agent@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-blue-400" />
-                <span>+62 (821) 222-333</span>
+                <span>+62 (857) 4332-5523</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-5 w-5 text-blue-400" />
