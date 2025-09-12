@@ -16,6 +16,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { PrivacyPolicy } from './components/pages/PrivacyPolicy';
 import { TermsOfService } from './components/pages/TermsOfService';
 import { ScrollToTop } from './components/ScrollToTop';
+import { AboutUs } from './components/pages/AboutUs';
+import { FAQPage } from './components/pages/FAQ';
 
 function HomePage() {
   return (
@@ -54,6 +56,8 @@ function App() {
           <Route path="/free-trial" element={<FreeTrialPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/faq" element={<FAQPage />} />
         </Routes>
       </div>
     </Router>

@@ -31,6 +31,22 @@ export const GetStartedPage: React.FC = () => {
 
       if (error) throw error;
 
+      // Hit service n8n webhook
+      // await fetch("https://<YOUR_N8N_DOMAIN>/webhook/66e974a8-917b-4c1f-9dbd-f29b638c987c", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     full_name: fullName,
+      //     work_email: workEmail,
+      //     company_name: companyName,
+      //     goal,
+      //     type_submit: "get-started",
+      //     submittedAt: new Date().toISOString(),
+      //   }),
+      // });
+
       setSuccess("Your request has been submitted!");
       setFullName("");
       setWorkEmail("");
